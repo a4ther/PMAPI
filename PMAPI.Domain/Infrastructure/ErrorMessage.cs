@@ -1,4 +1,4 @@
-﻿namespace PMAPI.Domain.Infrastructure
+﻿namespace PM.Domain.Infrastructure
 {
     public enum ErrorMessage
     {

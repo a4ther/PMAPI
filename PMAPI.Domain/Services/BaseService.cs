@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PMAPI.Data.Models;
-using PMAPI.Domain.Repositories;
+using PM.Data.Models;
+using PM.Domain.Repositories;
 
-namespace PMAPI.Domain.Services
+namespace PM.Domain.Services
 {
     public class BaseService<T> : IBaseService<T> where T : BaseEntity
     {

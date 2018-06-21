@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace PMAPI.Domain.Models
+namespace PM.Domain.Models
 {
     public class Money : IEquatable<Money>
     {

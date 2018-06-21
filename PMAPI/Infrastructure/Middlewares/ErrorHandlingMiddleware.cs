@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
-using PMAPI.Domain.Models;
+using PM.Domain.Models;
 
-namespace PMAPI.Infrastructure.Middlewares
+namespace PM.API.Infrastructure.Middlewares
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class ErrorHandlingMiddleware

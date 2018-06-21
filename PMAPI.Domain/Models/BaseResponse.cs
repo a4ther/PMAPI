@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace PMAPI.Domain.Models
+namespace PM.Domain.Models
 {
     public class BaseResponse
     {

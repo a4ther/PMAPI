@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PMAPI.Data.Contexts;
-using PMAPI.Data.Models;
+using PM.Data.Contexts;
+using PM.Data.Models;
 
-namespace PMAPI.Domain.Repositories
+namespace PM.Domain.Repositories
 {
     public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {

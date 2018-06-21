@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PMAPI.Data.Models
+namespace PM.Data.Models
 {
     [Table("Category")]
     public class Category : BaseEntity

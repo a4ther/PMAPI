@@ -1,4 +1,4 @@
-﻿namespace PMAPI.Domain.Models
+﻿namespace PM.Domain.Models
 {
     public enum CurrencyResponse
     {

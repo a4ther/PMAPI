@@ -3,11 +3,11 @@ using System.IO;
 using System.Linq;
 using CsvHelper;
 using Newtonsoft.Json;
-using PMAPI.CSVtoJSON.Models;
-using PMAPI.Data.Models;
-using PMAPI.Domain.Models;
+using PM.CSVtoJSON.Models;
+using PM.Data.Models;
+using PM.Domain.Models;
 
-namespace PMAPI.CSVtoJSON
+namespace PM.CSVtoJSON
 {
     public class Program
     {

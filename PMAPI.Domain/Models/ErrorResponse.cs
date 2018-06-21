@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace PMAPI.Domain.Models
+namespace PM.Domain.Models
 {
     public class ErrorResponse
     {

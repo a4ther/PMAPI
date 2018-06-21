@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace PMAPI.Domain.Models
+namespace PM.Domain.Models
 {
     public class CategoryResponse : BaseResponse, IEquatable<CategoryResponse>
     {

@@ -2,10 +2,10 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using PMAPI.Data;
-using PMAPI.Data.Contexts;
+using PM.Data;
+using PM.Data.Contexts;
 
-namespace PMAPI
+namespace PM.API
 {
     public class Program
     {

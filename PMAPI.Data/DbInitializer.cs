@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using PMAPI.Data.Contexts;
-using PMAPI.Data.Models;
+using PM.Data.Contexts;
+using PM.Data.Models;
 
-namespace PMAPI.Data
+namespace PM.Data
 {
     public static class DbInitializer
     {

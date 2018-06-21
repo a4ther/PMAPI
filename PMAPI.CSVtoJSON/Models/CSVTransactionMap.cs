@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using CsvHelper.Configuration;
-using PMAPI.Data.Models;
+using PM.Data.Models;
 
-namespace PMAPI.CSVtoJSON.Models
+namespace PM.CSVtoJSON.Models
 {
     public class CSVTransactionMap : ClassMap<Transaction>
     {

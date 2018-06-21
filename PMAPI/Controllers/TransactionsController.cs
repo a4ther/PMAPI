@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using PMAPI.Domain.Infrastructure;
-using PMAPI.Domain.Models;
-using PMAPI.Domain.Services;
-using PMAPI.Models;
+using PM.Domain.Infrastructure;
+using PM.Domain.Models;
+using PM.Domain.Services;
+using PM.API.Models;
 
-namespace PMAPI.Controllers
+namespace PM.API.Controllers
 {
     [Route("api/[controller]")]
     public class TransactionsController : ControllerBase

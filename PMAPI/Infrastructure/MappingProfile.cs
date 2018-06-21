@@ -1,10 +1,10 @@
 ﻿using System;
 using AutoMapper;
-using PMAPI.Data.Models;
-using PMAPI.Domain.Models;
-using PMAPI.Models;
+using PM.Data.Models;
+using PM.Domain.Models;
+using PM.API.Models;
 
-namespace PMAPI.Infrastructure
+namespace PM.API.Infrastructure
 {
 	public class MappingProfile : Profile
     {

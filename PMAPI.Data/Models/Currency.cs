@@ -1,4 +1,4 @@
-﻿namespace PMAPI.Data.Models
+﻿namespace PM.Data.Models
 {
     public enum Currency
     {

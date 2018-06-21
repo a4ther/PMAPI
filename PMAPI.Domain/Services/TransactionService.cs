@@ -4,10 +4,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
-using PMAPI.Data.Models;
-using PMAPI.Domain.Models;
+using PM.Data.Models;
+using PM.Domain.Models;
 
-namespace PMAPI.Domain.Services
+namespace PM.Domain.Services
 {
     public class TransactionService : ITransactionService
     {

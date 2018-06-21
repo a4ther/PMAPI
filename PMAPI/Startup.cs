@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
-using PMAPI.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
-using PMAPI.Domain.Repositories;
-using PMAPI.Domain.Services;
-using PMAPI.Domain.Infrastructure;
+using PM.Data.Contexts;
+using PM.Domain.Repositories;
+using PM.Domain.Services;
+using PM.Domain.Infrastructure;
 
-namespace PMAPI
+namespace PM.API
 {
     public class Startup
     {

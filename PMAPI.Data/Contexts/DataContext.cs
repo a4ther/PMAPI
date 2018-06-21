@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PMAPI.Data.Models;
+using PM.Data.Models;
 
-namespace PMAPI.Data.Contexts
+namespace PM.Data.Contexts
 {
 	public class DataContext : DbContext
     {

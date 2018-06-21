@@ -33,6 +33,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PMAPI.Data\PMAPI.Data.csproj" />
+    <ProjectReference Include="..\PMAPI.Data\PM.Data.csproj" />
   </ItemGroup>
 </Project>

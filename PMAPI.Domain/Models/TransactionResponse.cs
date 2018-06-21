@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PMAPI.Domain.Models
+namespace PM.Domain.Models
 {
     public class TransactionResponse : BaseResponse, IEquatable<TransactionResponse>
     {

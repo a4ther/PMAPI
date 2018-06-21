@@ -1,9 +1,9 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using PMAPI.Data.Models;
+using PM.Data.Models;
 
-namespace PMAPI.Models
+namespace PM.API.Models
 {
     public class PostTransaction
     {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PMAPI.Data.Models
+namespace PM.Data.Models
 {
     [Table("Transaction")]
     public class Transaction : BaseEntity

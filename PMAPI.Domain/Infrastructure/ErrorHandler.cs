@@ -1,5 +1,5 @@
 ﻿using System;
-namespace PMAPI.Domain.Infrastructure
+namespace PM.Domain.Infrastructure
 {
     public class ErrorHandler : IErrorHandler
     {
