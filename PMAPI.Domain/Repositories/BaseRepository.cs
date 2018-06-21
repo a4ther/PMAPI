@@ -21,51 +21,37 @@ namespace PMAPI.Domain.Repositories
             _entities = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> GetAll()
+        public Task<List<T>> GetAllAsync()
         {
-            return await _entities.ToListAsync<T>();
+            return _entities.ToListAsync<T>();
         }
 
-        public async Task<T> GetById(int id)
+        public Task<T> GetByIdAsync(int id)
         {
-            return await _entities.SingleOrDefaultAsync(e => e.ID == id);
+            return _entities.SingleOrDefaultAsync(e => e.ID == id);
         }
 
-        public IEnumerable<T> Where(Expression<Func<T, bool>> exp)
+        public Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp)
         {
-            return _entities.Where(exp);
+            return _entities.Where(exp).ToListAsync();
         }
 
-        public async void Insert(T entity)
+        public async Task<T> InsertAsync(T entity)
         {
-            if (entity == null)
-            {
-                //throw new ArgumentNullException(string.Format(_errorHandler.GetMessage(ErrorMessagesEnum.EntityNull), "", "Input data is null"));
-            }
-
             await _entities.AddAsync(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public async void Update(T entity)
+        public void Update(T entity)
         {
-            if (entity == null) 
-            {
-                //throw new ArgumentNullException(string.Format(_errorHandler.GetMessage(ErrorMessagesEnum.EntityNull), "", "Input data is null"));
-            }
-
-            var oldEntity = await _context.FindAsync<T>(entity.ID);
+            var oldEntity =  _context.Find<T>(entity.ID);
             _context.Entry(oldEntity).CurrentValues.SetValues(entity);
             _context.SaveChanges();
         }
 
         public void Delete(T entity)
         {
-            if (entity == null)
-            {
-                //throw new ArgumentNullException(string.Format(_errorHandler.GetMessage(ErrorMessagesEnum.EntityNull), "", "Input data is null"));
-            }
-
             _entities.Remove(entity);
             _context.SaveChanges();
         }

@@ -1,15 +1,12 @@
 ﻿using System;
-using Microsoft.AspNetCore.Mvc;
-using PMAPI.Domain.Models;
-using AutoMapper;
-using PMAPI.Domain.Services;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using System.Net.Http;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using PMAPI.Domain.Infrastructure;
-using System.Linq;
-using PMAPI.Models.Transactions;
+using PMAPI.Domain.Models;
+using PMAPI.Domain.Services;
 using PMAPI.Models;
 
 namespace PMAPI.Controllers
@@ -29,42 +26,82 @@ namespace PMAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<TransactionResponse>> GetAllAsync()
+        [ProducesResponseType(200, Type = typeof(List<TransactionResponse>))]
+        public async Task<IActionResult> GetAllAsync()
         {
-            return await _service.GetAsync();
+            var transactions = await _service.GetAsync();
+            return Ok(transactions);
         }
 
         [HttpGet("{id}")]
-        public async Task<TransactionResponse> GetByIdAsync([Required]int id)
+        [ProducesResponseType(200, Type = typeof(TransactionResponse))]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> GetByIdAsync([Required]int id)
         {
-            return await _service.GetByIdAsync(id);
+            var transaction = await _service.GetByIdAsync(id);
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            return Ok(transaction);
         }
 
         [HttpGet("{fromDate}/{toDate}")]
-        public IEnumerable<TransactionResponse> GetByDate([Required]DateTime fromDate,[Required]DateTime toDate)
+        [ProducesResponseType(200, Type = typeof(List<TransactionResponse>))]
+        public async Task<IActionResult> GetByDateAsync([Required]DateTime fromDate,[Required]DateTime toDate)
         {
-            return _service.Where(e => e.Date >= fromDate && e.Date <= toDate);
+            var transactions = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
+            return Ok(transactions);
         }
 
         [HttpPost]
-        //[ProducesResponseType(201, Type = typeof(TransactionResponse))]
-        //[ProducesResponseType(400)]
-        public void Post([FromBody]TransactionRequest request)
+        [ProducesResponseType(201, Type = typeof(TransactionResponse))]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> PostAsync([FromBody]PostTransaction request)
         {
             if (!ModelState.IsValid)
             {
-                //return BadRequest(ModelState);
+                return BadRequest(ModelState);
             }
 
-            var entity = _mapper.Map<TransactionRequest, TransactionResponse>(request);
-            _service.AddOrUpdate(entity);
-            //return Ok();
+            var entity = _mapper.Map<PostTransaction, TransactionResponse>(request);
+            var response = await _service.AddAsync(entity);
+            return Created($"api/transactions/{response.ID}", response);
+        }
+
+        [HttpPut]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> PutAsync([FromBody]PutTransaction request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var entity = _mapper.Map<PutTransaction, TransactionResponse>(request);
+            var transaction = await _service.UpdateAsync(entity);
+
+            if(transaction == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public void Delete([Required]int id)
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public async Task<IActionResult> DeleteAsync([Required]int id)
         {
-            _service.Remove(id);
+            var transaction = await _service.RemoveAsync(id);
+
+            if (transaction == null)
+            {
+                return NotFound();
+            }
+            return Ok();
 
         }
     }

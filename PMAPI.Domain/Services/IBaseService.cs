@@ -8,14 +8,16 @@ namespace PMAPI.Domain.Services
 {
     public interface IBaseService<T> where T : BaseEntity
     {
-        Task<IEnumerable<T>> GetAsync();
+        Task<List<T>> GetAsync();
 
         Task<T> GetByIdAsync(int id);
 
-        IEnumerable<T> Where(Expression<Func<T, bool>> exp);
+        Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp);
 
-        void AddOrUpdate(T entry);
+        Task<T> AddAsync(T entry);
 
-        void Remove(int id);
+        Task<T> UpdateAsync(T entry);
+
+        Task<T> RemoveAsync(int id);
     }
 }

@@ -20,15 +20,17 @@ namespace PMAPI.Domain.Services
             _mapper = mapper;
         }
 
-        public void AddOrUpdate(TransactionResponse entry)
+        public async Task<TransactionResponse> AddAsync(TransactionResponse entry)
         {
-            _service.AddOrUpdate(_mapper.Map<TransactionResponse, Transaction>(entry));
+            var transaction = _mapper.Map<TransactionResponse, Transaction>(entry);
+            transaction = await _service.AddAsync(transaction);
+            return _mapper.Map<Transaction, TransactionResponse>(transaction);
         }
 
-        public async Task<IEnumerable<TransactionResponse>> GetAsync()
+        public async Task<List<TransactionResponse>> GetAsync()
         {
             var result = await _service.GetAsync();
-            return _mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionResponse>>(result);
+            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
         }
 
         public async Task<TransactionResponse> GetByIdAsync(int id)
@@ -37,15 +39,23 @@ namespace PMAPI.Domain.Services
             return _mapper.Map<Transaction, TransactionResponse>(result);
         }
 
-        public void Remove(int id)
+        public async Task<TransactionResponse> RemoveAsync(int id)
         {
-            _service.Remove(id);
+            var transaction = await _service.RemoveAsync(id);
+            return _mapper.Map<Transaction, TransactionResponse>(transaction);
         }
 
-        public IEnumerable<TransactionResponse> Where(Expression<Func<Transaction, bool>> exp)
+        public async Task<TransactionResponse> UpdateAsync(TransactionResponse entry)
         {
-            var result = _service.Where(exp);
-            return _mapper.Map<IEnumerable<Transaction>, IEnumerable<TransactionResponse>>(result);
+            var transaction = _mapper.Map<TransactionResponse, Transaction>(entry);
+            transaction = await _service.UpdateAsync(transaction);
+            return _mapper.Map<Transaction, TransactionResponse>(transaction);
+        }
+
+        public async Task<List<TransactionResponse>> WhereAsync(Expression<Func<Transaction, bool>> exp)
+        {
+            var result = await _service.WhereAsync(exp);
+            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
         }
     }
 }

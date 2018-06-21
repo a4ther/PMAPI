@@ -8,13 +8,13 @@ namespace PMAPI.Domain.Repositories
 {
     public interface IBaseRepository<T>  where T : BaseEntity
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<List<T>> GetAllAsync();
 
-        Task<T> GetById(int id);
+        Task<T> GetByIdAsync(int id);
 
-        IEnumerable<T> Where(Expression<Func<T, bool>> exp);
+        Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp);
 
-        void Insert(T entity);
+        Task<T> InsertAsync(T entity);
 
         void Update(T entity);
 

@@ -2,7 +2,7 @@
 using AutoMapper;
 using PMAPI.Data.Models;
 using PMAPI.Domain.Models;
-using PMAPI.Models.Transactions;
+using PMAPI.Models;
 
 namespace PMAPI.Infrastructure
 {
@@ -10,7 +10,32 @@ namespace PMAPI.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<TransactionRequest, TransactionResponse>()
+            CreateMap<PostTransaction, TransactionResponse>()
+                .ForMember(dest => dest.Category,
+                           opts => opts.MapFrom(
+                               src => new CategoryResponse
+                               {
+                                   ID = src.CategoryID
+                               }
+                          ))
+                .ForMember(dest => dest.Money,
+                           opts => opts.ResolveUsing(
+                               src =>
+                               {
+                                   CurrencyResponse currency = CurrencyResponse.CRC;
+                                   if (Enum.TryParse<CurrencyResponse>(src.Currency.ToString(), out var parsedCurrency))
+                                   {
+                                       currency = parsedCurrency;
+                                   }
+                                   return new Money
+                                   {
+                                       Amount = src.Amount,
+                                       Currency = currency
+                                   };
+                               }
+                          ));
+
+            CreateMap<PutTransaction, TransactionResponse>()
                 .ForMember(dest => dest.Category,
                            opts => opts.MapFrom(
                                src => new CategoryResponse

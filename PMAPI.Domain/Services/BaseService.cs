@@ -16,41 +16,48 @@ namespace PMAPI.Domain.Services
             _repository = repository;
         }
 
-        public void AddOrUpdate(T entry)
+        public Task<T> AddAsync(T entry)
         {
-            var target = _repository.GetById(entry.ID).Result;
+            entry.DateAdded = DateTime.UtcNow;
+            entry.DateModified = DateTime.UtcNow;
+            return _repository.InsertAsync(entry);
+        }
 
+        public Task<List<T>> GetAsync()
+        {
+            return _repository.GetAllAsync();
+        }
+
+        public Task<T> GetByIdAsync(int id)
+        {
+            return _repository.GetByIdAsync(id);
+        }
+
+        public Task<T> RemoveAsync(int id)
+        {
+            var target = _repository.GetByIdAsync(id).Result;
             if (target != null)
             {
-                entry.DateAdded = target.DateAdded;
-                entry.DateModified = DateTime.UtcNow;
-                _repository.Update(entry);
-                return;
+                _repository.Delete(target);
             }
-
-            entry.DateAdded = DateTime.UtcNow;
-            _repository.Insert(entry);
+            return Task.FromResult<T>(target);
         }
 
-        public async Task<IEnumerable<T>> GetAsync()
+        public Task<T> UpdateAsync(T entry)
         {
-            return await _repository.GetAll();
+            var target = _repository.GetByIdAsync(entry.ID).Result;
+            if (target != null)
+            {
+                entry.DateModified = DateTime.UtcNow;
+                entry.DateAdded = target.DateAdded;
+                _repository.Update(entry);
+            }
+            return Task.FromResult<T>(target);
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp)
         {
-            return await _repository.GetById(id);
-        }
-
-        public void Remove(int id)
-        {
-            var target = _repository.GetById(id).Result;
-            _repository.Delete(target);
-        }
-
-        public IEnumerable<T> Where(Expression<Func<T, bool>> exp)
-        {
-            return _repository.Where(exp);
+            return _repository.WhereAsync(exp);
         }
     }
 }

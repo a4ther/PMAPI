@@ -9,14 +9,16 @@ namespace PMAPI.Domain.Services
 {
     public interface ITransactionService
     {
-        Task<IEnumerable<TransactionResponse>> GetAsync();
+        Task<List<TransactionResponse>> GetAsync();
 
         Task<TransactionResponse> GetByIdAsync(int id);
 
-        IEnumerable<TransactionResponse> Where(Expression<Func<Transaction, bool>> exp);
+        Task<List<TransactionResponse>> WhereAsync(Expression<Func<Transaction, bool>> exp);
 
-        void AddOrUpdate(TransactionResponse entry);
+        Task<TransactionResponse> AddAsync(TransactionResponse entry);
 
-        void Remove(int id);
+        Task<TransactionResponse> UpdateAsync(TransactionResponse entry);
+
+        Task<TransactionResponse> RemoveAsync(int id);
     }
 }
