@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PM.API.Infrastructure.Configurations;
+using PM.API.Infrastructure.Middlewares;
 using PM.Data.Contexts;
 using PM.Domain.Repositories;
 using PM.Domain.Services;
@@ -33,6 +35,7 @@ namespace PM.API
             services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IErrorHandler, ErrorHandler>();
+            services.Configure<Messages>(Configuration.GetSection("Messages"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +45,7 @@ namespace PM.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseErrorHandlingMiddleware();
 
             app.UseMvc();
         }

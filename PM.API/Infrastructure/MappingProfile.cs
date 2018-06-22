@@ -27,7 +27,7 @@ namespace PM.API.Infrastructure
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new Money
+                                   return new MoneyResponse
                                    {
                                        Amount = src.Amount,
                                        Currency = currency
@@ -52,7 +52,7 @@ namespace PM.API.Infrastructure
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new Money
+                                   return new MoneyResponse
                                    {
                                        Amount = src.Amount,
                                        Currency = currency
@@ -91,7 +91,7 @@ namespace PM.API.Infrastructure
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new Money
+                                   return new MoneyResponse
                                    {
                                        Amount = src.Amount,
                                        Currency = currency

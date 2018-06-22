@@ -13,7 +13,6 @@ namespace PM.Domain.Repositories
     {
         private readonly DataContext _context;
         private readonly DbSet<T> _entities;
-        //private readonly IErrorHandler _errorHandler;
 
         public BaseRepository(DataContext context)
         {

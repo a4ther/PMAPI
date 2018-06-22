@@ -1,6 +1,6 @@
 ﻿namespace PM.API.Infrastructure.Configurations
 {
-    public class Message
+    public class Messages
     {
         public string DefaultError { get; set; }
     }

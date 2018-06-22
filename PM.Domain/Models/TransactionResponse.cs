@@ -9,7 +9,7 @@ namespace PM.Domain.Models
 
         public DateTime Date { get; set; }
 
-        public Money Money { get; set; }
+        public MoneyResponse Money { get; set; }
 
         public string Wallet { get; set; }
 

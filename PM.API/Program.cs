@@ -29,7 +29,6 @@ namespace PM.API
             }
 
             host.Run();
-            BuildWebHost(args).Run();
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
