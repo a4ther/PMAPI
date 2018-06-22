@@ -1,0 +1,16 @@
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/bin/Debug/netcoreapp2.0/PM.Data.deps.json
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/bin/Debug/netcoreapp2.0/PM.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/bin/Debug/netcoreapp2.0/PM.Data.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/obj/Debug/netcoreapp2.0/PM.Data.csproj.CoreCompileInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/obj/Debug/netcoreapp2.0/PM.Data.AssemblyInfoInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/obj/Debug/netcoreapp2.0/PM.Data.AssemblyInfo.cs
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/obj/Debug/netcoreapp2.0/PM.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Data/obj/Debug/netcoreapp2.0/PM.Data.pdb
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/bin/Debug/netcoreapp2.0/PM.Data.deps.json
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/bin/Debug/netcoreapp2.0/PM.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/bin/Debug/netcoreapp2.0/PM.Data.pdb
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/obj/Debug/netcoreapp2.0/PM.Data.csproj.CoreCompileInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/obj/Debug/netcoreapp2.0/PM.Data.AssemblyInfoInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/obj/Debug/netcoreapp2.0/PM.Data.AssemblyInfo.cs
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/obj/Debug/netcoreapp2.0/PM.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PM.Data/obj/Debug/netcoreapp2.0/PM.Data.pdb
