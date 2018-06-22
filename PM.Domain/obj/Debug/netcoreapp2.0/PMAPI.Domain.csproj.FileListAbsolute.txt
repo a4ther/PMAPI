@@ -1,0 +1,11 @@
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/bin/Debug/netcoreapp2.0/PMAPI.Domain.deps.json
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/bin/Debug/netcoreapp2.0/PMAPI.Domain.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/bin/Debug/netcoreapp2.0/PMAPI.Domain.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/bin/Debug/netcoreapp2.0/PMAPI.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/bin/Debug/netcoreapp2.0/PMAPI.Data.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.csprojResolveAssemblyReference.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.csproj.CoreCompileInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.AssemblyInfoInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.AssemblyInfo.cs
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.Domain/obj/Debug/netcoreapp2.0/PMAPI.Domain.pdb

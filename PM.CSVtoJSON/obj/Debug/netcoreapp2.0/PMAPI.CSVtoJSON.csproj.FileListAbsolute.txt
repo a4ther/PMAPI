@@ -1,0 +1,15 @@
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.deps.json
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.runtimeconfig.json
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.runtimeconfig.dev.json
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.Data.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.Domain.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.Domain.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/bin/Debug/netcoreapp2.0/PMAPI.Data.pdb
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.csprojResolveAssemblyReference.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.csproj.CoreCompileInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.AssemblyInfoInputs.cache
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.AssemblyInfo.cs
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.dll
+/Users/leealfarosoto/Projects/PMAPI/PMAPI.CSVtoJSON/obj/Debug/netcoreapp2.0/PMAPI.CSVtoJSON.pdb
