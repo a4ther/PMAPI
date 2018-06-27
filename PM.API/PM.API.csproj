@@ -9,11 +9,14 @@
     <Folder Include="Models\" />
     <Folder Include="Infrastructure\Middlewares\" />
     <Folder Include="Infrastructure\Configurations\" />
+    <Folder Include="Models\Logging\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="AutoMapper" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="4.0.1" />
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="2.2.0" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
@@ -21,9 +24,16 @@
   <ItemGroup>
     <Compile Remove="Controllers\Transactions2Controller.cs" />
     <Compile Remove="Models\HttpStatusCode.cs" />
+    <Compile Remove="log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PM.Data\PM.Data.csproj" />
     <ProjectReference Include="..\PM.Domain\PM.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="log4net.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config" />
   </ItemGroup>
 </Project>

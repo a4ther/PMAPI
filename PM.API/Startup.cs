@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using PM.API.Infrastructure.Configurations;
 using PM.API.Infrastructure.Middlewares;
 using PM.Data.Contexts;
@@ -39,14 +40,17 @@ namespace PM.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseErrorHandlingMiddleware();
 
+            loggerFactory.AddLog4Net();
+
+            app.UseErrorHandlingMiddleware();
+            app.UseLoggingMiddleware();
             app.UseMvc();
         }
     }
