@@ -4,10 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PM.Domain.Models;
 using PM.Domain.Services;
 using PM.API.Models;
-using Microsoft.Extensions.Logging;
 
 namespace PM.API.Controllers
 {

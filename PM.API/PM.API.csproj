@@ -9,6 +9,7 @@
     <Folder Include="Models\" />
     <Folder Include="Infrastructure\Middlewares\" />
     <Folder Include="Infrastructure\Configurations\" />
+    <Folder Include="Models\Logging\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />

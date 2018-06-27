@@ -50,7 +50,7 @@ namespace PM.API
             loggerFactory.AddLog4Net();
 
             app.UseErrorHandlingMiddleware();
-
+            app.UseLoggingMiddleware();
             app.UseMvc();
         }
     }
