@@ -59,12 +59,12 @@ namespace PM.API.Controllers
 
         [HttpGet("{fromDate}/{toDate}")]
         [ProducesResponseType(200, Type = typeof(List<TransactionResponse>))]
-        public async Task<IActionResult> GetByDateAsync([Required]DateTime fromDate,[Required]DateTime toDate)
+        public async Task<IActionResult> GetByDateAsync([Required]DateTime fromDate, [Required]DateTime toDate)
         {
             var prefix = "[GetByDateAsync]";
             _logger.LogInformation($"{prefix} Executing action");
 
-            var transactions = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
+            var transactions = await _service.GetByDateAsync(fromDate, toDate);
 
             _logger.LogInformation($"{prefix} Returning {transactions.Count} transactions");
             return Ok(transactions);

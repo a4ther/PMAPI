@@ -13,7 +13,7 @@ namespace PM.Domain.Services
 
         Task<TransactionResponse> GetByIdAsync(int id);
 
-        Task<List<TransactionResponse>> WhereAsync(Expression<Func<Transaction, bool>> exp);
+        Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate);
 
         Task<TransactionResponse> AddAsync(TransactionResponse entry);
 

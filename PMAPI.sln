@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.Data", "PM.Data\PM.Data.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.CSVtoJSON", "PM.CSVtoJSON\PM.CSVtoJSON.csproj", "{83292AA0-9216-42CD-85DA-14FEA7F02842}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{92B74093-92D0-4F89-AD3E-40CFFBC9DB6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PM.API.Test", "PM.API.Test\PM.API.Test.csproj", "{467B15BE-5316-485E-9A42-185421F47B49}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,5 +35,12 @@ Global
 		{83292AA0-9216-42CD-85DA-14FEA7F02842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83292AA0-9216-42CD-85DA-14FEA7F02842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83292AA0-9216-42CD-85DA-14FEA7F02842}.Release|Any CPU.Build.0 = Release|Any CPU
+		{467B15BE-5316-485E-9A42-185421F47B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{467B15BE-5316-485E-9A42-185421F47B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{467B15BE-5316-485E-9A42-185421F47B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{467B15BE-5316-485E-9A42-185421F47B49}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{467B15BE-5316-485E-9A42-185421F47B49} = {92B74093-92D0-4F89-AD3E-40CFFBC9DB6C}
 	EndGlobalSection
 EndGlobal
