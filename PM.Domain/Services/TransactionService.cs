@@ -52,9 +52,9 @@ namespace PM.Domain.Services
             return _mapper.Map<Transaction, TransactionResponse>(transaction);
         }
 
-        public async Task<List<TransactionResponse>> WhereAsync(Expression<Func<Transaction, bool>> exp)
+        public async Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate)
         {
-            var result = await _service.WhereAsync(exp);
+            var result = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
             return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
         }
     }
