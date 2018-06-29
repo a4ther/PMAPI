@@ -12,12 +12,12 @@
     <Compile Remove="Services\CategoryService.cs" />
     <Compile Remove="Models\ImportRequest.cs" />
     <Compile Remove="Configuration\DomainProfile.cs" />
+    <Compile Remove="Infrastructure\ErrorHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\" />
     <Folder Include="Models\" />
     <Folder Include="Services\" />
-    <Folder Include="Infrastructure\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="7.0.0" />

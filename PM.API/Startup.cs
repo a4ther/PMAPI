@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AutoMapper;
+using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using PM.API.Infrastructure.Configurations;
@@ -10,7 +11,6 @@ using PM.API.Infrastructure.Middlewares;
 using PM.Data.Contexts;
 using PM.Domain.Repositories;
 using PM.Domain.Services;
-using PM.Domain.Infrastructure;
 
 namespace PM.API
 {
@@ -27,7 +27,9 @@ namespace PM.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper();
-            services.AddMvc();
+            services.AddMvc().AddFluentValidation(fv => 
+                fv.RegisterValidatorsFromAssemblyContaining<Startup>()
+            );
             services.AddDbContext<DataContext>(opts =>
             {
                 opts.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
@@ -35,7 +37,6 @@ namespace PM.API
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddTransient<ITransactionService, TransactionService>();
-            services.AddTransient<IErrorHandler, ErrorHandler>();
             services.Configure<Messages>(Configuration.GetSection("Messages"));
         }
 
@@ -51,6 +52,7 @@ namespace PM.API
 
             app.UseErrorHandlingMiddleware();
             app.UseLoggingMiddleware();
+
             app.UseMvc();
         }
     }

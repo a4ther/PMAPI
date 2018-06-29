@@ -57,9 +57,6 @@ namespace PM.API.Infrastructure.Middlewares
 
         private static async Task<string> FormatRequest(HttpRequest httpRequest, MemoryStream requestStream)
         {
-            var protocol = httpRequest.IsHttps ? "https" : "http";
-            var route = $"{httpRequest.Method} {protocol}://{httpRequest.Host.Value}{httpRequest.Path}";
-
             using (var bodyReader = new StreamReader(httpRequest.Body))
             {
                 var bodyAsText = await bodyReader.ReadToEndAsync();
@@ -72,7 +69,7 @@ namespace PM.API.Infrastructure.Middlewares
                 var requestLog = new RequestLog
                 {
                     Body = JsonConvert.DeserializeObject(bodyAsText),
-                    Route = route,
+                    Route = $"{httpRequest.Method} {httpRequest.Scheme}://{httpRequest.Host.Value}{httpRequest.Path}",
                     QueryString = httpRequest.QueryString.Value
                 };
 
