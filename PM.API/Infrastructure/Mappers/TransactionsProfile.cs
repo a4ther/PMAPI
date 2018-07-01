@@ -2,13 +2,13 @@
 using AutoMapper;
 using PM.Data.Models;
 using PM.Domain.Models;
-using PM.API.Models;
+using PM.API.Models.Request;
 
-namespace PM.API.Infrastructure
+namespace PM.API.Infrastructure.Mappers
 {
-	public class MappingProfile : Profile
+	public class TransactionsProfile : Profile
     {
-        public MappingProfile()
+        public TransactionsProfile()
         {
             CreateMap<PostTransaction, TransactionResponse>()
                 .ForMember(dest => dest.Category,

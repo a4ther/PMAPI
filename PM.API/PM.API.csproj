@@ -11,6 +11,8 @@
     <Folder Include="Infrastructure\Configurations\" />
     <Folder Include="Models\Logging\" />
     <Folder Include="Infrastructure\Validators\" />
+    <Folder Include="Models\Request\" />
+    <Folder Include="Infrastructure\Mappers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="7.6.103" />
@@ -37,6 +39,7 @@
     <Content Remove="appsettings.Development.json" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="log.txt" />
     <None Remove="log.txt" />
     <None Remove="log.txt" />
   </ItemGroup>

@@ -55,7 +55,7 @@ namespace PM.Data
 
             return new Category 
             {
-                Categories = categoriesCollection,
+                Subcategories = categoriesCollection,
                 DateAdded = DateTime.UtcNow,
                 DateModified = DateTime.UtcNow,
                 Name = name

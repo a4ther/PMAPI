@@ -5,7 +5,6 @@ namespace PM.Data.Contexts
 {
 	public class DataContext : DbContext
     {
-
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Category> Categories { get; set; }
 

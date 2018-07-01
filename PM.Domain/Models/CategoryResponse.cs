@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace PM.Domain.Models
 {
@@ -8,12 +6,16 @@ namespace PM.Domain.Models
     {
         public string Name { get; set; }
 
-        [JsonIgnore]
-        public IEnumerable<CategoryResponse> Categories { get; set; }
+        public CategoryResponse Parent { get; set; }
 
         public bool ShouldSerializeName()
         {
             return !string.IsNullOrEmpty(Name);
+        }
+
+        public bool ShouldSerializeParent()
+        {
+            return Parent != null;
         }
 
         public bool Equals(CategoryResponse other)

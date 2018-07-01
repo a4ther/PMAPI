@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using PM.Data.Models;
@@ -33,6 +31,13 @@ namespace PM.Domain.Services
             return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
         }
 
+
+        public async Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate)
+        {
+            var result = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
+            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
+        }
+
         public async Task<TransactionResponse> GetByIdAsync(int id)
         {
             var result = await _service.GetByIdAsync(id);
@@ -50,12 +55,6 @@ namespace PM.Domain.Services
             var transaction = _mapper.Map<TransactionResponse, Transaction>(entry);
             transaction = await _service.UpdateAsync(transaction);
             return _mapper.Map<Transaction, TransactionResponse>(transaction);
-        }
-
-        public async Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate)
-        {
-            var result = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
-            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
         }
     }
 }

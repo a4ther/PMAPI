@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PM.Domain.Models;
 using PM.Domain.Services;
-using PM.API.Models;
+using PM.API.Models.Request;
 
 namespace PM.API.Controllers
 {

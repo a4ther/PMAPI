@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,11 +11,10 @@ namespace PM.Data.Models
         [MaxLength(25, ErrorMessage = "Name must be 25 characters or less")]
         public string Name { get; set; }
 
-        public ICollection<Category> Categories { get; set; }
+        public int? ParentID { get; set; }
 
-        public Category()
-        {
-            Categories = new Collection<Category>();
-        }
+        public virtual Category Parent { get; set; }
+
+        public virtual ICollection<Category> Subcategories { get; set; }
     }
 }

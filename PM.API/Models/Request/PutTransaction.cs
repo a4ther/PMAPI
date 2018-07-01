@@ -1,7 +1,7 @@
 ﻿using System;
 using PM.Domain.Models;
 
-namespace PM.API.Models
+namespace PM.API.Models.Request
 {
     public class PutTransaction
     {

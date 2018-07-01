@@ -1,19 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace PM.Domain.Models
 {
     public class BaseResponse
     {
-        [Required]
+        [JsonProperty(Order = 1)]
         public int ID { get; set; }
-
-        [JsonIgnore]
-        public DateTime DateAdded { get; set; }
-
-        [JsonIgnore]
-        public DateTime DateModified { get; set; }
 
         public bool ShouldSerializeID()
         {
