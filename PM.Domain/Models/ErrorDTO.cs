@@ -1,9 +1,8 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace PM.Domain.Models
 {
-    public class ErrorResponse
+    public class ErrorDTO
     {
         public int Code { get; set; }
         public string Message { get; set; }

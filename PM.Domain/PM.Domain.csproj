@@ -9,7 +9,6 @@
     <Compile Remove="Configuration\AutoMapper.cs" />
     <Compile Remove="Configuration\MapperConfiguration.cs" />
     <Compile Remove="Data\FakeRepository.cs" />
-    <Compile Remove="Services\CategoryService.cs" />
     <Compile Remove="Models\ImportRequest.cs" />
     <Compile Remove="Configuration\DomainProfile.cs" />
     <Compile Remove="Infrastructure\ErrorHandler.cs" />

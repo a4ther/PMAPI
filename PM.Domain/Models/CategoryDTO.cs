@@ -1,22 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace PM.Domain.Models
 {
-    public class CategoryResponse : BaseResponse, IEquatable<CategoryResponse>
+    public class CategoryDTO : BaseDTO, IEquatable<CategoryDTO>
     {
         public string Name { get; set; }
 
-        [JsonIgnore]
-        public IEnumerable<CategoryResponse> Categories { get; set; }
+        public CategoryDTO Parent { get; set; }
 
         public bool ShouldSerializeName()
         {
             return !string.IsNullOrEmpty(Name);
         }
 
-        public bool Equals(CategoryResponse other)
+        public bool ShouldSerializeParent()
+        {
+            return Parent != null;
+        }
+
+        public bool Equals(CategoryDTO other)
         {
             if (other == null)
             {
@@ -38,7 +40,7 @@ namespace PM.Domain.Models
                 return false;
             }
 
-            var categoryObj = obj as CategoryResponse;
+            var categoryObj = obj as CategoryDTO;
             if (categoryObj == null)
             {
                 return false;
@@ -56,7 +58,7 @@ namespace PM.Domain.Models
             return this.Name.GetHashCode();
         }
 
-        public static bool operator == (CategoryResponse category1, CategoryResponse category2)
+        public static bool operator == (CategoryDTO category1, CategoryDTO category2)
         {
             if (Object.ReferenceEquals(category1, null))
             {
@@ -66,7 +68,7 @@ namespace PM.Domain.Models
             return category1.Equals(category2);
         }
 
-        public static bool operator != (CategoryResponse category1, CategoryResponse category2)
+        public static bool operator != (CategoryDTO category1, CategoryDTO category2)
         {
             return !(category1 == category2);
         }

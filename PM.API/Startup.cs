@@ -37,6 +37,7 @@ namespace PM.API
             services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
             services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
             services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<ICategoryService, CategoryService>();
             services.Configure<Messages>(Configuration.GetSection("Messages"));
         }
 

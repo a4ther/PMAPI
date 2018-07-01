@@ -2,18 +2,18 @@
 using AutoMapper;
 using PM.Data.Models;
 using PM.Domain.Models;
-using PM.API.Models;
+using PM.API.Models.Request;
 
-namespace PM.API.Infrastructure
+namespace PM.API.Infrastructure.Mappers
 {
-	public class MappingProfile : Profile
+	public class TransactionsProfile : Profile
     {
-        public MappingProfile()
+        public TransactionsProfile()
         {
-            CreateMap<PostTransaction, TransactionResponse>()
+            CreateMap<PostTransaction, TransactionDTO>()
                 .ForMember(dest => dest.Category,
                            opts => opts.MapFrom(
-                               src => new CategoryResponse
+                               src => new CategoryDTO
                                {
                                    ID = src.CategoryID
                                }
@@ -22,12 +22,12 @@ namespace PM.API.Infrastructure
                            opts => opts.ResolveUsing(
                                src =>
                                {
-                                   CurrencyResponse currency = CurrencyResponse.CRC;
-                                   if (Enum.TryParse<CurrencyResponse>(src.Currency.ToString(), out var parsedCurrency))
+                                   Domain.Models.Currency currency = Domain.Models.Currency.CRC;
+                                   if (Enum.TryParse<Domain.Models.Currency>(src.Currency.ToString(), out var parsedCurrency))
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new MoneyResponse
+                                   return new MoneyDTO
                                    {
                                        Amount = src.Amount,
                                        Currency = currency
@@ -35,10 +35,10 @@ namespace PM.API.Infrastructure
                                }
                           ));
 
-            CreateMap<PutTransaction, TransactionResponse>()
+            CreateMap<PutTransaction, TransactionDTO>()
                 .ForMember(dest => dest.Category,
                            opts => opts.MapFrom(
-                               src => new CategoryResponse
+                               src => new CategoryDTO
                                {
                                    ID = src.CategoryID
                                }
@@ -47,12 +47,12 @@ namespace PM.API.Infrastructure
                            opts => opts.ResolveUsing(
                                src =>
                                {
-                                   CurrencyResponse currency = CurrencyResponse.CRC;
-                                   if (Enum.TryParse<CurrencyResponse>(src.Currency.ToString(), out var parsedCurrency))
+                                   Domain.Models.Currency currency = Domain.Models.Currency.CRC;
+                                   if (Enum.TryParse<Domain.Models.Currency>(src.Currency.ToString(), out var parsedCurrency))
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new MoneyResponse
+                                   return new MoneyDTO
                                    {
                                        Amount = src.Amount,
                                        Currency = currency
@@ -60,7 +60,7 @@ namespace PM.API.Infrastructure
                                }
                           ));
 
-            CreateMap<TransactionResponse, Transaction>()
+            CreateMap<TransactionDTO, Transaction>()
                 .ForMember(dest => dest.Amount,
                            opts => opts.MapFrom(
                                src => src.Money.Amount
@@ -74,10 +74,10 @@ namespace PM.API.Infrastructure
                                src => src.Money.Currency
                           ));
 
-            CreateMap<Transaction, TransactionResponse>()
+            CreateMap<Transaction, TransactionDTO>()
                 .ForMember(dest => dest.Category,
                            opts => opts.MapFrom(
-                               src => new CategoryResponse
+                               src => new CategoryDTO
                                {
                                    ID = src.CategoryID
                                }
@@ -86,12 +86,12 @@ namespace PM.API.Infrastructure
                            opts => opts.ResolveUsing(
                                src =>
                                {
-                                   CurrencyResponse currency = CurrencyResponse.CRC;
-                                   if (Enum.TryParse<CurrencyResponse>(src.Currency.ToString(), out var parsedCurrency))
+                                   Domain.Models.Currency currency = Domain.Models.Currency.CRC;
+                                   if (Enum.TryParse<Domain.Models.Currency>(src.Currency.ToString(), out var parsedCurrency))
                                    {
                                        currency = parsedCurrency;
                                    }
-                                   return new MoneyResponse
+                                   return new MoneyDTO
                                    {
                                        Amount = src.Amount,
                                        Currency = currency

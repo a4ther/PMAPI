@@ -1,6 +1,6 @@
 ﻿namespace PM.Domain.Models
 {
-    public enum CurrencyResponse
+    public enum Currency
     {
 		CRC = 1,
         USD

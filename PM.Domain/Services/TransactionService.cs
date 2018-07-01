@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using PM.Data.Models;
@@ -20,42 +18,43 @@ namespace PM.Domain.Services
             _mapper = mapper;
         }
 
-        public async Task<TransactionResponse> AddAsync(TransactionResponse entry)
+        public async Task<TransactionDTO> AddAsync(TransactionDTO entry)
         {
-            var transaction = _mapper.Map<TransactionResponse, Transaction>(entry);
+            var transaction = _mapper.Map<TransactionDTO, Transaction>(entry);
             transaction = await _service.AddAsync(transaction);
-            return _mapper.Map<Transaction, TransactionResponse>(transaction);
+            return _mapper.Map<Transaction, TransactionDTO>(transaction);
         }
 
-        public async Task<List<TransactionResponse>> GetAsync()
+        public async Task<List<TransactionDTO>> GetAsync()
         {
             var result = await _service.GetAsync();
-            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
+            return _mapper.Map<List<Transaction>, List<TransactionDTO>>(result);
         }
 
-        public async Task<TransactionResponse> GetByIdAsync(int id)
-        {
-            var result = await _service.GetByIdAsync(id);
-            return _mapper.Map<Transaction, TransactionResponse>(result);
-        }
 
-        public async Task<TransactionResponse> RemoveAsync(int id)
-        {
-            var transaction = await _service.RemoveAsync(id);
-            return _mapper.Map<Transaction, TransactionResponse>(transaction);
-        }
-
-        public async Task<TransactionResponse> UpdateAsync(TransactionResponse entry)
-        {
-            var transaction = _mapper.Map<TransactionResponse, Transaction>(entry);
-            transaction = await _service.UpdateAsync(transaction);
-            return _mapper.Map<Transaction, TransactionResponse>(transaction);
-        }
-
-        public async Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate)
+        public async Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate)
         {
             var result = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
-            return _mapper.Map<List<Transaction>, List<TransactionResponse>>(result);
+            return _mapper.Map<List<Transaction>, List<TransactionDTO>>(result);
+        }
+
+        public async Task<TransactionDTO> GetByIdAsync(int id)
+        {
+            var result = await _service.GetByIdAsync(id);
+            return _mapper.Map<Transaction, TransactionDTO>(result);
+        }
+
+        public async Task<TransactionDTO> RemoveAsync(int id)
+        {
+            var transaction = await _service.RemoveAsync(id);
+            return _mapper.Map<Transaction, TransactionDTO>(transaction);
+        }
+
+        public async Task<TransactionDTO> UpdateAsync(TransactionDTO entry)
+        {
+            var transaction = _mapper.Map<TransactionDTO, Transaction>(entry);
+            transaction = await _service.UpdateAsync(transaction);
+            return _mapper.Map<Transaction, TransactionDTO>(transaction);
         }
     }
 }

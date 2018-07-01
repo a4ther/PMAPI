@@ -45,7 +45,7 @@ namespace PM.API.Infrastructure.Middlewares
             response.ContentType = "application/json";
             response.StatusCode = _errorStatusCode;
 
-            var errorResponse = new ErrorResponse
+            var errorResponse = new ErrorDTO
             {
                 Code = _errorStatusCode,
                 Message = _errorMessage,

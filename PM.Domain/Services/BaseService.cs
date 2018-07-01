@@ -16,11 +16,11 @@ namespace PM.Domain.Services
             _repository = repository;
         }
 
-        public Task<T> AddAsync(T entry)
+        public async Task<T> AddAsync(T entry)
         {
             entry.DateAdded = DateTime.UtcNow;
             entry.DateModified = DateTime.UtcNow;
-            return _repository.InsertAsync(entry);
+            return await _repository.InsertAsync(entry);
         }
 
         public Task<List<T>> GetAsync()
@@ -35,7 +35,7 @@ namespace PM.Domain.Services
 
         public Task<T> RemoveAsync(int id)
         {
-            var target = _repository.GetByIdAsync(id).Result;
+            var target =  _repository.GetByIdAsync(id).Result;
             if (target != null)
             {
                 _repository.Delete(target);

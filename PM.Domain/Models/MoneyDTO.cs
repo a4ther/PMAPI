@@ -4,14 +4,14 @@ using Newtonsoft.Json.Converters;
 
 namespace PM.Domain.Models
 {
-    public class MoneyResponse : IEquatable<MoneyResponse>
+    public class MoneyDTO : IEquatable<MoneyDTO>
     {
         public decimal Amount { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
-        public CurrencyResponse Currency { get; set; }
+        public Currency Currency { get; set; }
 
-        public bool Equals(MoneyResponse other)
+        public bool Equals(MoneyDTO other)
         {
             if (other == null)
             {
@@ -28,7 +28,7 @@ namespace PM.Domain.Models
                 return false;
             }
 
-            var moneyObj = obj as MoneyResponse;
+            var moneyObj = obj as MoneyDTO;
             if (moneyObj == null)
             {
                 return false;
@@ -42,7 +42,7 @@ namespace PM.Domain.Models
             return hashString.GetHashCode();
         }
 
-        public static bool operator == (MoneyResponse money1, MoneyResponse money2)
+        public static bool operator == (MoneyDTO money1, MoneyDTO money2)
         {
             if (Object.ReferenceEquals(money1, null))
             {
@@ -52,7 +52,7 @@ namespace PM.Domain.Models
             return money1.Equals(money2);
         }
 
-        public static bool operator != (MoneyResponse money1, MoneyResponse money2)
+        public static bool operator != (MoneyDTO money1, MoneyDTO money2)
         {
             return !(money1 == money2);
         }

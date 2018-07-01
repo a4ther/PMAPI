@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using PM.API.Models;
+using PM.API.Models.Request;
 
 namespace PM.API.Infrastructure.Validators
 {
