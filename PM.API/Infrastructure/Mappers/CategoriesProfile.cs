@@ -9,7 +9,7 @@ namespace PM.API.Infrastructure.Mappers
     {
         public CategoriesProfile()
         {
-            CreateMap<PostCategory, CategoryResponse>()
+            CreateMap<PostCategory, CategoryDTO>()
                 .ForMember(dest => dest.Parent,
                            opts => opts.ResolveUsing(
                                src =>
@@ -25,7 +25,7 @@ namespace PM.API.Infrastructure.Mappers
                                }
                           ));
 
-            CreateMap<PutCategory, CategoryResponse>()
+            CreateMap<PutCategory, CategoryDTO>()
                 .ForMember(dest => dest.Parent,
                            opts => opts.ResolveUsing(
                                src =>
@@ -41,7 +41,7 @@ namespace PM.API.Infrastructure.Mappers
                                }
                           ));
 
-            CreateMap<CategoryResponse, Category>()
+            CreateMap<CategoryDTO, Category>()
                 .ForMember(dest => dest.ParentID,
                            opts => opts.ResolveUsing(
                                src =>

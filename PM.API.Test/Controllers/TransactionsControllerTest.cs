@@ -33,7 +33,7 @@ namespace PM.API.Test.Controllers
         public async Task GetAllAsyncTest_ReturnsOk()
         {
             _serviceMock.Setup(s => s.GetAsync())
-                        .Returns(Task.FromResult(new List<TransactionResponse>()));
+                        .Returns(Task.FromResult(new List<TransactionDTO>()));
 
             var result = await controller.GetAllAsync();
 
@@ -43,7 +43,7 @@ namespace PM.API.Test.Controllers
         [Fact]
         public async Task GetByIdAsyncTest_ReturnsOk()
         {
-            var transaction = new TransactionResponse();
+            var transaction = new TransactionDTO();
 
             _serviceMock.Setup(s => s.GetByIdAsync(1))
                         .Returns(Task.FromResult(transaction));
@@ -57,7 +57,7 @@ namespace PM.API.Test.Controllers
         public async Task GetByIdAsyncTest_ReturnsNotFound()
         {
             _serviceMock.Setup(s => s.GetByIdAsync(1))
-                        .Returns(Task.FromResult((TransactionResponse)null));
+                        .Returns(Task.FromResult((TransactionDTO)null));
 
             var result = await controller.GetByIdAsync(1);
 
@@ -68,7 +68,7 @@ namespace PM.API.Test.Controllers
         public async Task GetByDateAsyncTest_ReturnsOk()
         {
             _serviceMock.Setup(s => s.GetByDateAsync(DateTime.Today, DateTime.Today))
-                        .Returns(Task.FromResult(new List<TransactionResponse>()));
+                        .Returns(Task.FromResult(new List<TransactionDTO>()));
 
             var result = await controller.GetByDateAsync(DateTime.Today, DateTime.Today);
 
@@ -78,10 +78,10 @@ namespace PM.API.Test.Controllers
         [Fact]
         public async Task PostAsyncTest_ReturnsCreated()
         {
-            var transaction = new TransactionResponse();
+            var transaction = new TransactionDTO();
             var postTransaction = new PostTransaction();
 
-            _mapperMock.Setup(m => m.Map<PostTransaction, TransactionResponse>(postTransaction))
+            _mapperMock.Setup(m => m.Map<PostTransaction, TransactionDTO>(postTransaction))
                        .Returns(transaction);
             _serviceMock.Setup(s => s.AddAsync(transaction))
                         .Returns(Task.FromResult(transaction));
@@ -105,10 +105,10 @@ namespace PM.API.Test.Controllers
         [Fact]
         public async Task PutAsyncTest_ReturnsNoContent()
         {
-            var transaction = new TransactionResponse();
+            var transaction = new TransactionDTO();
             var putTransaction = new PutTransaction();
 
-            _mapperMock.Setup(m => m.Map<PutTransaction, TransactionResponse>(putTransaction))
+            _mapperMock.Setup(m => m.Map<PutTransaction, TransactionDTO>(putTransaction))
                        .Returns(transaction);
             _serviceMock.Setup(s => s.UpdateAsync(transaction))
                         .Returns(Task.FromResult(transaction));
@@ -132,13 +132,13 @@ namespace PM.API.Test.Controllers
         [Fact]
         public async Task PutAsyncTest_ReturnsNotFound()
         {
-            var transaction = new TransactionResponse();
+            var transaction = new TransactionDTO();
             var putTransaction = new PutTransaction();
 
-            _mapperMock.Setup(m => m.Map<PutTransaction, TransactionResponse>(putTransaction))
+            _mapperMock.Setup(m => m.Map<PutTransaction, TransactionDTO>(putTransaction))
                        .Returns(transaction);
             _serviceMock.Setup(s => s.UpdateAsync(transaction))
-                        .Returns(Task.FromResult((TransactionResponse)null));
+                        .Returns(Task.FromResult((TransactionDTO)null));
 
             var result = await controller.PutAsync(putTransaction);
 
@@ -149,7 +149,7 @@ namespace PM.API.Test.Controllers
         public async Task DeleteAsyncTest_ReturnsOk()
         {
             _serviceMock.Setup(s => s.RemoveAsync(1))
-                        .Returns(Task.FromResult(new TransactionResponse()));
+                        .Returns(Task.FromResult(new TransactionDTO()));
 
             var result = await controller.DeleteAsync(1);
 
@@ -160,7 +160,7 @@ namespace PM.API.Test.Controllers
         public async Task DeleteAsyncTest_ReturnsNotFound()
         {
             _serviceMock.Setup(s => s.RemoveAsync(1))
-                        .Returns(Task.FromResult((TransactionResponse)null));
+                        .Returns(Task.FromResult((TransactionDTO)null));
 
             var result = await controller.DeleteAsync(1);
 

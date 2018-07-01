@@ -27,7 +27,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(List<CategoryResponse>))]
+        [ProducesResponseType(200, Type = typeof(List<CategoryDTO>))]
         public async Task<IActionResult> GetAllAsync()
         {
             var prefix = "[GetAllAsync]";
@@ -40,7 +40,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(200, Type = typeof(CategoryResponse))]
+        [ProducesResponseType(200, Type = typeof(CategoryDTO))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetByIdAsync([Required]int id)
         {
@@ -59,7 +59,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet("{id}/subcategories")]
-        [ProducesResponseType(200, Type = typeof(List<CategoryResponse>))]
+        [ProducesResponseType(200, Type = typeof(List<CategoryDTO>))]
         public async Task<IActionResult> GetSubcategoriesAsync([Required]int id)
         {
             var prefix = "[GetSubcategoriesAsync]";
@@ -72,7 +72,7 @@ namespace PM.API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(201, Type = typeof(CategoryResponse))]
+        [ProducesResponseType(201, Type = typeof(CategoryDTO))]
         [ProducesResponseType(400)]
         public async Task<IActionResult> PostAsync([FromBody]PostCategory request)
         {
@@ -85,7 +85,7 @@ namespace PM.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var entity = _mapper.Map<PostCategory, CategoryResponse>(request);
+            var entity = _mapper.Map<PostCategory, CategoryDTO>(request);
             var response = await _service.AddAsync(entity);
 
             _logger.LogInformation($"{prefix} Added category with id {response.ID}");
@@ -107,7 +107,7 @@ namespace PM.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var entity = _mapper.Map<PutCategory, CategoryResponse>(request);
+            var entity = _mapper.Map<PutCategory, CategoryDTO>(request);
             var response = await _service.UpdateAsync(entity);
 
             if (response == null)

@@ -11,7 +11,7 @@ namespace PM.API.Models.Request
 
         public int CategoryID { get; set; }
 
-        public CurrencyResponse Currency { get; set; }
+        public Currency Currency { get; set; }
 
         public DateTime Date { get; set; }
 

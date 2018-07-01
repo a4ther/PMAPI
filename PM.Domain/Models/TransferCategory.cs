@@ -2,7 +2,7 @@
 {
     public enum TransferCategory
     {
-        Others = 1,
-        Gifts
+        Gifts = 1,
+        Withdrawal
     }
 }

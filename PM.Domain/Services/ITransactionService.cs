@@ -9,16 +9,16 @@ namespace PM.Domain.Services
 {
     public interface ITransactionService
     {
-        Task<List<TransactionResponse>> GetAsync();
+        Task<List<TransactionDTO>> GetAsync();
 
-        Task<TransactionResponse> GetByIdAsync(int id);
+        Task<TransactionDTO> GetByIdAsync(int id);
 
-        Task<List<TransactionResponse>> GetByDateAsync(DateTime fromDate, DateTime toDate);
+        Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate);
 
-        Task<TransactionResponse> AddAsync(TransactionResponse entry);
+        Task<TransactionDTO> AddAsync(TransactionDTO entry);
 
-        Task<TransactionResponse> UpdateAsync(TransactionResponse entry);
+        Task<TransactionDTO> UpdateAsync(TransactionDTO entry);
 
-        Task<TransactionResponse> RemoveAsync(int id);
+        Task<TransactionDTO> RemoveAsync(int id);
     }
 }

@@ -26,7 +26,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(List<TransactionResponse>))]
+        [ProducesResponseType(200, Type = typeof(List<TransactionDTO>))]
         public async Task<IActionResult> GetAllAsync()
         {
             var prefix = "[GetAllAsync]";
@@ -39,7 +39,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(200, Type = typeof(TransactionResponse))]
+        [ProducesResponseType(200, Type = typeof(TransactionDTO))]
         [ProducesResponseType(404)]
         public async Task<IActionResult> GetByIdAsync([Required]int id)
         {
@@ -58,7 +58,7 @@ namespace PM.API.Controllers
         }
 
         [HttpGet("{fromDate}/{toDate}")]
-        [ProducesResponseType(200, Type = typeof(List<TransactionResponse>))]
+        [ProducesResponseType(200, Type = typeof(List<TransactionDTO>))]
         public async Task<IActionResult> GetByDateAsync([Required]DateTime fromDate, [Required]DateTime toDate)
         {
             var prefix = "[GetByDateAsync]";
@@ -71,7 +71,7 @@ namespace PM.API.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(201, Type = typeof(TransactionResponse))]
+        [ProducesResponseType(201, Type = typeof(TransactionDTO))]
         [ProducesResponseType(400)]
         public async Task<IActionResult> PostAsync([FromBody]PostTransaction request)
         {
@@ -84,7 +84,7 @@ namespace PM.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var entity = _mapper.Map<PostTransaction, TransactionResponse>(request);
+            var entity = _mapper.Map<PostTransaction, TransactionDTO>(request);
             var response = await _service.AddAsync(entity);
 
             _logger.LogInformation($"{prefix} Added transaction with id {response.ID}");
@@ -106,7 +106,7 @@ namespace PM.API.Controllers
                 return BadRequest(ModelState);
             }
 
-            var entity = _mapper.Map<PutTransaction, TransactionResponse>(request);
+            var entity = _mapper.Map<PutTransaction, TransactionDTO>(request);
             var transaction = await _service.UpdateAsync(entity);
 
             if(transaction == null)

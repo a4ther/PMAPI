@@ -2,17 +2,17 @@
 
 namespace PM.Domain.Models
 {
-    public class TransactionResponse : BaseResponse, IEquatable<TransactionResponse>
+    public class TransactionDTO : BaseDTO, IEquatable<TransactionDTO>
     {
-        public CategoryResponse Category { get; set; }
+        public CategoryDTO Category { get; set; }
 
         public DateTime Date { get; set; }
 
-        public MoneyResponse Money { get; set; }
+        public MoneyDTO Money { get; set; }
 
         public string Wallet { get; set; }
 
-        public bool Equals(TransactionResponse other)
+        public bool Equals(TransactionDTO other)
         {
             if (other == null)
             {
@@ -35,7 +35,7 @@ namespace PM.Domain.Models
                 return false;
             }
 
-            var transactionObj = obj as TransactionResponse;
+            var transactionObj = obj as TransactionDTO;
             if (transactionObj == null)
             {
                 return false;
@@ -54,7 +54,7 @@ namespace PM.Domain.Models
             return hastString.GetHashCode();
         }
 
-        public static bool operator == (TransactionResponse transaction1, TransactionResponse transaction2)
+        public static bool operator == (TransactionDTO transaction1, TransactionDTO transaction2)
         {
             if (Object.ReferenceEquals(transaction1, null))
             {
@@ -64,7 +64,7 @@ namespace PM.Domain.Models
             return transaction1.Equals(transaction2);
         }
 
-        public static bool operator != (TransactionResponse transaction1, TransactionResponse transaction2)
+        public static bool operator != (TransactionDTO transaction1, TransactionDTO transaction2)
         {
             return !(transaction1 == transaction2);
         }

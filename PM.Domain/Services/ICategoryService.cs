@@ -7,16 +7,16 @@ namespace PM.Domain.Services
 {
     public interface ICategoryService
     {
-        Task<List<CategoryResponse>> GetAsync();
+        Task<List<CategoryDTO>> GetAsync();
 
-        Task<CategoryResponse> GetByIdAsync(int id);
+        Task<CategoryDTO> GetByIdAsync(int id);
 
-        Task<List<CategoryResponse>> GetSubcategoriesAsync(int id);
+        Task<List<CategoryDTO>> GetSubcategoriesAsync(int id);
 
-        Task<CategoryResponse> AddAsync(CategoryResponse entry);
+        Task<CategoryDTO> AddAsync(CategoryDTO entry);
 
-        Task<CategoryResponse> UpdateAsync(CategoryResponse entry);
+        Task<CategoryDTO> UpdateAsync(CategoryDTO entry);
 
-        Task<CategoryResponse> RemoveAsync(int id);
+        Task<CategoryDTO> RemoveAsync(int id);
     }
 }

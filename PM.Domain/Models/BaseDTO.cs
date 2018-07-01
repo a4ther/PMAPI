@@ -2,7 +2,7 @@
 
 namespace PM.Domain.Models
 {
-    public class BaseResponse
+    public class BaseDTO
     {
         [JsonProperty(Order = 1)]
         public int ID { get; set; }

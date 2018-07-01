@@ -14,5 +14,6 @@
   <ItemGroup>
     <Compile Remove="Entities\Currency.cs" />
     <Compile Remove="Entities\CategoryDAO.cs" />
+    <Compile Remove="Models\Currency.cs" />
   </ItemGroup>
 </Project>
