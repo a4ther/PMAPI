@@ -11,6 +11,7 @@ namespace PM.Data.Models
         [MaxLength(25, ErrorMessage = "Name must be 25 characters or less")]
         public string Name { get; set; }
 
+        [ForeignKey("Parent")]
         public int? ParentID { get; set; }
 
         public virtual Category Parent { get; set; }

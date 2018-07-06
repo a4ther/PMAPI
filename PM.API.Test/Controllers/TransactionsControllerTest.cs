@@ -30,17 +30,6 @@ namespace PM.API.Test.Controllers
         }
 
         [Fact]
-        public async Task GetAllAsyncTest_ReturnsOk()
-        {
-            _serviceMock.Setup(s => s.GetAsync())
-                        .Returns(Task.FromResult(new List<TransactionDTO>()));
-
-            var result = await controller.GetAllAsync();
-
-            var assert = Assert.IsType<OkObjectResult>(result);
-        }
-
-        [Fact]
         public async Task GetByIdAsyncTest_ReturnsOk()
         {
             var transaction = new TransactionDTO();

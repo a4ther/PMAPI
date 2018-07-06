@@ -5,9 +5,9 @@ using PM.Domain.Models;
 
 namespace PM.API.Infrastructure.Mappers
 {
-    public class CategoriesProfile : Profile
+    public class CategoryProfile : Profile
     {
-        public CategoriesProfile()
+        public CategoryProfile()
         {
             CreateMap<PostCategory, CategoryDTO>()
                 .ForMember(dest => dest.Parent,
@@ -46,15 +46,13 @@ namespace PM.API.Infrastructure.Mappers
                            opts => opts.ResolveUsing(
                                src =>
                                {
-                                   if(src.Parent != null)
+                                   if (src.Parent != null)
                                    {
                                        return src.Parent.ID;
                                    }
                                    return (int?)null;
                                }
-                          ))
-                .ForMember(dest => dest.Parent, 
-                           opts => opts.Ignore());
+                          ));
         }
     }
 }

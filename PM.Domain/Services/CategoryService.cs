@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using PM.Data.Models;
@@ -22,10 +22,12 @@ namespace PM.Domain.Services
         {
             var category = _mapper.Map<CategoryDTO, Category>(entry);
             category = await _service.AddAsync(category);
+
             if (category.ParentID.HasValue)
             {
                 category.Parent = await _service.GetByIdAsync(category.ParentID.Value);
             }
+
             return _mapper.Map<Category, CategoryDTO>(category);
         }
 
@@ -38,11 +40,30 @@ namespace PM.Domain.Services
         public async Task<CategoryDTO> GetByIdAsync(int id)
         {
             var category = await _service.GetByIdAsync(id);
-            if (category.ParentID.HasValue)
+
+            if (category != null)
             {
-                category.Parent = await _service.GetByIdAsync(category.ParentID.Value);
+                if (category.ParentID.HasValue)
+                {
+                    category.Parent = await _service.GetByIdAsync(category.ParentID.Value);
+                }
+
+                return _mapper.Map<Category, CategoryDTO>(category);
             }
-            return _mapper.Map<Category, CategoryDTO>(category);
+
+            return null;
+        }
+
+        public async Task<CategoryDTO> GetByNameAsync(string name)
+        {
+            var result = await _service.WhereAsync(c => c.Name == name);
+
+            if (result.Count > 0)
+            {
+                return _mapper.Map<Category, CategoryDTO>(result.First());
+            }
+
+            return null;
         }
 
         public async Task<List<CategoryDTO>> GetSubcategoriesAsync(int id)
@@ -60,14 +81,20 @@ namespace PM.Domain.Services
         public async Task<CategoryDTO> UpdateAsync(CategoryDTO entry)
         {
             var category = _mapper.Map<CategoryDTO, Category>(entry);
-            if (!category.ParentID.HasValue)
+            var entity = await _service.GetByIdAsync(category.ID);
+
+            if (entity != null)
             {
-                var entity = await _service.GetByIdAsync(category.ID);
-                category.ParentID = entity.ParentID;
+                if (!category.ParentID.HasValue)
+                {
+                    category.ParentID = entity.ParentID;
+                }
+
+                category = await _service.UpdateAsync(category);
+                return _mapper.Map<Category, CategoryDTO>(category);
             }
 
-            category = await _service.UpdateAsync(category);
-            return _mapper.Map<Category, CategoryDTO>(category);
+            return null;
         }
     }
 }

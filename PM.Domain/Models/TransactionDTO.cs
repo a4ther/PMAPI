@@ -1,9 +1,13 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace PM.Domain.Models
 {
     public class TransactionDTO : BaseDTO, IEquatable<TransactionDTO>
     {
+        [JsonIgnore]
+        public int? BatchID { get; set; }
+
         public CategoryDTO Category { get; set; }
 
         public DateTime Date { get; set; }

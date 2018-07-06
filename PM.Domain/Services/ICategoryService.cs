@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using PM.Domain.Models;
 
@@ -10,6 +9,8 @@ namespace PM.Domain.Services
         Task<List<CategoryDTO>> GetAsync();
 
         Task<CategoryDTO> GetByIdAsync(int id);
+
+        Task<CategoryDTO> GetByNameAsync(string name);
 
         Task<List<CategoryDTO>> GetSubcategoriesAsync(int id);
 

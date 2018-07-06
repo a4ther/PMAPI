@@ -7,9 +7,14 @@ namespace PM.Data.Models
     [Table("Transaction")]
     public class Transaction : BaseEntity
     {
+        [ForeignKey("Batch")]
+        public int? BatchID { get; set; }
+
         [ForeignKey("Category")]
         [Required(ErrorMessage = "Category ID is required")]
         public int CategoryID { get; set; }
+
+        public virtual Category Category { get; set; }
 
         [Required(ErrorMessage = "Amount is required")]
         public decimal Amount { get; set; }

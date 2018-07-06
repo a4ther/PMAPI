@@ -6,7 +6,7 @@ using PM.Data.Models;
 
 namespace PM.Domain.Repositories
 {
-    public interface IBaseRepository<T>  where T : BaseEntity
+    public interface IBaseRepository<T> where T : BaseEntity
     {
         Task<List<T>> GetAllAsync();
 
