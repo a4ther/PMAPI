@@ -4,14 +4,14 @@ using System.Linq;
 using CsvHelper;
 using Newtonsoft.Json;
 using PM.CSVtoJSON.Models;
-using PM.Data.Models;
+using PM.API.Models.Request;
 
 namespace PM.CSVtoJSON
 {
     public class Program
     {
-        private static string _filePath { get; set; }
-        //private static ImportRequest _request { get; set; }
+        private static string _filePath;
+        private static PostBatch _request;
 
         public static void Main(string[] args)
         {
@@ -24,7 +24,11 @@ namespace PM.CSVtoJSON
                 _filePath = args[0];
             }
 #endif
-            //_request = new ImportRequest(false, true);
+            _request = new PostBatch
+            {
+                AllowDuplicates = false,
+                ExcludeTransfers = true
+            };
 
             ValidateFilePath();
             ReadCSV();
@@ -52,8 +56,8 @@ namespace PM.CSVtoJSON
                 var csv = new CsvReader(reader);
                 csv.Configuration.HasHeaderRecord = true;
                 csv.Configuration.RegisterClassMap<CSVTransactionMap>();
-                //_request.Transactions = csv.GetRecords<Transaction>().ToList();
-                //Console.WriteLine($"Succesfully read {_request.Transactions.Count} transactions from {Path.GetFileName(_filePath)}...");
+                _request.Transactions = csv.GetRecords<PostBatchTransaction>().ToList();
+                Console.WriteLine($"Succesfully read {_request.Transactions.Count} transactions from {Path.GetFileName(_filePath)}...");
             }
         }
 
@@ -66,8 +70,9 @@ namespace PM.CSVtoJSON
             {
                 Console.WriteLine($"Writing {Path.Combine(directoryName, fileName)} file...");
                 JsonSerializer serializer = new JsonSerializer();
-                //serializer.Serialize(writer, _request);
-                //Console.WriteLine($"Succesfully wrote {_request.Transactions.Count} transactions to {fileName}...");
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(writer, _request);
+                Console.WriteLine($"Succesfully wrote {_request.Transactions.Count} transactions to {fileName}...");
             }
         }
     }
