@@ -12,7 +12,6 @@
     <Compile Remove="Models\ImportRequest.cs" />
     <Compile Remove="Configuration\DomainProfile.cs" />
     <Compile Remove="Infrastructure\ErrorHandler.cs" />
-    <Compile Remove="Repositories\BatchRepository.cs" />
     <Compile Remove="Repositories\BaseRepositoryExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

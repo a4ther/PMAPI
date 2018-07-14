@@ -15,10 +15,10 @@ namespace PM.API.Test.Controllers
 {
     public class TransactionsControllerTest
     {
-        private Mock<ITransactionService> _serviceMock;
-        private Mock<IMapper> _mapperMock;
-        private Mock<ILogger<TransactionsController>> _loggerMock;
-        private TransactionsController controller;
+        private readonly Mock<ITransactionService> _serviceMock;
+        private readonly Mock<IMapper> _mapperMock;
+        private readonly Mock<ILogger<TransactionsController>> _loggerMock;
+        private readonly TransactionsController controller;
 
         public TransactionsControllerTest()
         {

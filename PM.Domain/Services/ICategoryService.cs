@@ -1,23 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using PM.Data.Models;
 using PM.Domain.Models;
 
 namespace PM.Domain.Services
 {
-    public interface ICategoryService
+    public interface ICategoryService : IBaseService<CategoryDTO, Category>
     {
-        Task<List<CategoryDTO>> GetAsync();
-
-        Task<CategoryDTO> GetByIdAsync(int id);
-
         Task<CategoryDTO> GetByNameAsync(string name);
 
         Task<List<CategoryDTO>> GetSubcategoriesAsync(int id);
-
-        Task<CategoryDTO> AddAsync(CategoryDTO entry);
-
-        Task<CategoryDTO> UpdateAsync(CategoryDTO entry);
-
-        Task<CategoryDTO> RemoveAsync(int id);
     }
 }

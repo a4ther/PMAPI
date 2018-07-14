@@ -15,10 +15,10 @@ namespace PM.API.Test.Controllers
 {
     public class BatchesControllerTest
     {
-        private Mock<IBatchService> _serviceMock;
-        private Mock<IMapper> _mapperMock;
-        private Mock<ILogger<BatchesController>> _loggerMock;
-        private BatchesController controller;
+        private readonly Mock<IBatchService> _serviceMock;
+        private readonly Mock<IMapper> _mapperMock;
+        private readonly Mock<ILogger<BatchesController>> _loggerMock;
+        private readonly BatchesController controller;
 
         public BatchesControllerTest()
         {

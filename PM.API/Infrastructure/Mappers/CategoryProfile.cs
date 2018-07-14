@@ -52,7 +52,9 @@ namespace PM.API.Infrastructure.Mappers
                                    }
                                    return (int?)null;
                                }
-                          ));
+                          ))
+                .ForMember(dest => dest.Parent,
+                           opts => opts.Ignore());
         }
     }
 }

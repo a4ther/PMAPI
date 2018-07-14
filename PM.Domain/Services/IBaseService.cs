@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using PM.Data.Models;
+using PM.Domain.Models;
 
 namespace PM.Domain.Services
 {
-    public interface IBaseService<T> where T : BaseEntity
+    public interface IBaseService<TDto, TEntity> 
+        where TDto : BaseDTO
+        where TEntity : BaseEntity
     {
-        Task<List<T>> GetAsync();
+        Task<List<TDto>> GetAsync();
 
-        Task<T> GetByIdAsync(int id);
+        Task<TDto> GetByIdAsync(int id);
 
-        Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp);
+        Task<List<TDto>> WhereAsync(Expression<Func<TEntity, bool>> exp);
 
-        Task<T> AddAsync(T entry);
+        Task<TDto> AddAsync(TDto entry);
 
-        Task<T> UpdateAsync(T entry);
+        Task<TDto> UpdateAsync(TDto entry);
 
-        Task<T> RemoveAsync(int id);
+        Task<TDto> RemoveAsync(int id);
     }
 }

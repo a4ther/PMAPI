@@ -40,7 +40,7 @@ namespace PM.API.Infrastructure.Mappers
                                    };
                                }
                           ));
-
+            
             CreateMap<BatchDTO, Batch>()
                 .ForMember(dest => dest.Transactions,
                            opts => opts.Ignore());

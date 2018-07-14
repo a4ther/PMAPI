@@ -2,62 +2,80 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using AutoMapper;
 using PM.Data.Models;
+using PM.Domain.Models;
 using PM.Domain.Repositories;
 
 namespace PM.Domain.Services
 {
-    public class BaseService<T> : IBaseService<T> where T : BaseEntity
+    public abstract class BaseService<TDto, TEntity> : IBaseService<TDto, TEntity>
+        where TDto : BaseDTO
+        where TEntity : BaseEntity
     {
-        private readonly IBaseRepository<T> _repository;
+        protected readonly IBaseRepository<TEntity> _repository;
+        protected readonly IMapper _mapper;
 
-        public BaseService(IBaseRepository<T> repository)
+        protected BaseService(IBaseRepository<TEntity> repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
-        public async Task<T> AddAsync(T entry)
+        public virtual async Task<TDto> AddAsync(TDto entry)
         {
-            entry.DateAdded = DateTime.UtcNow;
-            entry.DateModified = DateTime.UtcNow;
-            return await _repository.InsertAsync(entry);
+            var entity = _mapper.Map<TDto, TEntity>(entry);
+
+            entity.DateAdded = DateTime.UtcNow;
+            entity.DateModified = entity.DateAdded;
+            entity = await _repository.InsertAsync(entity);
+
+            return _mapper.Map<TEntity, TDto>(entity);
         }
 
-        public Task<List<T>> GetAsync()
+        public virtual async Task<List<TDto>> GetAsync()
         {
-            return _repository.GetAllAsync();
+            var entities = await _repository.GetAllAsync();
+            return _mapper.Map<List<TEntity>, List<TDto>>(entities);
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public virtual async Task<TDto> GetByIdAsync(int id)
         {
-            return _repository.GetByIdAsync(id);
+            var entity = await _repository.GetByIdAsync(id);
+            return _mapper.Map<TEntity, TDto>(entity);
         }
 
-        public Task<T> RemoveAsync(int id)
+        public virtual async Task<TDto> RemoveAsync(int id)
         {
-            var target =  _repository.GetByIdAsync(id).Result;
+            var target =  await _repository.GetByIdAsync(id);
+
             if (target != null)
             {
                 _repository.Delete(target);
             }
-            return Task.FromResult<T>(target);
+
+            return _mapper.Map<TEntity, TDto>(target);
         }
 
-        public Task<T> UpdateAsync(T entry)
+        public virtual async Task<TDto> UpdateAsync(TDto entry)
         {
-            var target = _repository.GetByIdAsync(entry.ID).Result;
+            var target = await _repository.GetByIdAsync(entry.ID);
+
             if (target != null)
             {
-                entry.DateModified = DateTime.UtcNow;
-                entry.DateAdded = target.DateAdded;
-                _repository.Update(entry);
+                var entity = _mapper.Map<TDto, TEntity>(entry);
+
+                entity.DateModified = DateTime.UtcNow;
+                entity.DateAdded = target.DateAdded;
+                _repository.Update(entity);
             }
-            return Task.FromResult<T>(target);
+            return _mapper.Map<TEntity, TDto>(target);
         }
 
-        public Task<List<T>> WhereAsync(Expression<Func<T, bool>> exp)
+        public virtual async Task<List<TDto>> WhereAsync(Expression<Func<TEntity, bool>> exp)
         {
-            return _repository.WhereAsync(exp);
+            var entities = await _repository.WhereAsync(exp);
+            return _mapper.Map<List<TEntity>, List<TDto>>(entities);
         }
     }
 }

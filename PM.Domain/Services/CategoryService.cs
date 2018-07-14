@@ -1,96 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using PM.Data.Models;
 using PM.Domain.Models;
+using PM.Domain.Repositories;
 
 namespace PM.Domain.Services
 {
-    public class CategoryService : ICategoryService
+    public class CategoryService : BaseService<CategoryDTO, Category>, ICategoryService
     {
-        private readonly IBaseService<Category> _service;
-        private readonly IMapper _mapper;
-
-        public CategoryService(IBaseService<Category> service, IMapper mapper)
+        public CategoryService(ICategoryRepository repository, IMapper mapper)
+            : base(repository, mapper)
         {
-            _service = service;
-            _mapper = mapper;
         }
 
-        public async Task<CategoryDTO> AddAsync(CategoryDTO entry)
+        public override async Task<CategoryDTO> AddAsync(CategoryDTO entry)
         {
-            var category = _mapper.Map<CategoryDTO, Category>(entry);
-            category = await _service.AddAsync(category);
-
-            if (category.ParentID.HasValue)
-            {
-                category.Parent = await _service.GetByIdAsync(category.ParentID.Value);
-            }
-
-            return _mapper.Map<Category, CategoryDTO>(category);
-        }
-
-        public async Task<List<CategoryDTO>> GetAsync()
-        {
-            var categories = await _service.GetAsync();
-            return _mapper.Map<List<Category>, List<CategoryDTO>>(categories);
-        }
-
-        public async Task<CategoryDTO> GetByIdAsync(int id)
-        {
-            var category = await _service.GetByIdAsync(id);
-
-            if (category != null)
-            {
-                if (category.ParentID.HasValue)
-                {
-                    category.Parent = await _service.GetByIdAsync(category.ParentID.Value);
-                }
-
-                return _mapper.Map<Category, CategoryDTO>(category);
-            }
-
-            return null;
+            var category = await base.AddAsync(entry);
+            return await base.GetByIdAsync(category.ID);
         }
 
         public async Task<CategoryDTO> GetByNameAsync(string name)
         {
-            var result = await _service.WhereAsync(c => c.Name == name);
+            var result = await base.WhereAsync(c => c.Name.Equals(name));
+            return result.FirstOrDefault();
+        }
 
-            if (result.Count > 0)
+        public Task<List<CategoryDTO>> GetSubcategoriesAsync(int id)
+        {
+            return base.WhereAsync(c => c.ParentID == id);
+        }
+
+        public override async Task<CategoryDTO> UpdateAsync(CategoryDTO entry)
+        {
+            var target = await _repository.GetByIdAsync(entry.ID);
+
+            if (target != null)
             {
-                return _mapper.Map<Category, CategoryDTO>(result.First());
-            }
+                var category = _mapper.Map<CategoryDTO, Category>(entry);
 
-            return null;
-        }
-
-        public async Task<List<CategoryDTO>> GetSubcategoriesAsync(int id)
-        {
-            var subcategories = await _service.WhereAsync(c => c.ParentID == id);
-            return _mapper.Map<List<Category>, List<CategoryDTO>>(subcategories);
-        }
-
-        public async Task<CategoryDTO> RemoveAsync(int id)
-        {
-            var category = await _service.RemoveAsync(id);
-            return _mapper.Map<Category, CategoryDTO>(category);
-        }
-
-        public async Task<CategoryDTO> UpdateAsync(CategoryDTO entry)
-        {
-            var category = _mapper.Map<CategoryDTO, Category>(entry);
-            var entity = await _service.GetByIdAsync(category.ID);
-
-            if (entity != null)
-            {
                 if (!category.ParentID.HasValue)
                 {
-                    category.ParentID = entity.ParentID;
+                    category.ParentID = target.ParentID;
                 }
 
-                category = await _service.UpdateAsync(category);
+                category.DateModified = DateTime.UtcNow;
+                category.DateAdded = target.DateAdded;
+                _repository.Update(category);
+
                 return _mapper.Map<Category, CategoryDTO>(category);
             }
 

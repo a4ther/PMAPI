@@ -8,18 +8,17 @@ using PM.Data.Models;
 
 namespace PM.Domain.Repositories
 {
-    public class TransactionRepository : ITransactionRepository
+    public class TransactionRepository : BaseRepository<Transaction>, ITransactionRepository
     {
-        private readonly DataContext _context;
-
         public TransactionRepository(DataContext context)
+            : base(context)
         {
-            _context = context;
         }
 
         public Task<List<Transaction>> GetByDateWithCategoryAsync(DateTime from, DateTime to)
         {
-            return _context.Transactions.Where(t => t.Date >= from && t.Date <= to).Include(t => t.Category).ToListAsync();
+            return _context.Transactions.Where(t => t.Date >= from && t.Date <= to)
+                           .Include(t => t.Category).ToListAsync();
         }
     }
 }
