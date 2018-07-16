@@ -4,57 +4,29 @@ using System.Threading.Tasks;
 using AutoMapper;
 using PM.Data.Models;
 using PM.Domain.Models;
+using PM.Domain.Repositories;
 
 namespace PM.Domain.Services
 {
-    public class TransactionService : ITransactionService
+    public class TransactionService : BaseService<TransactionDTO, Transaction>, ITransactionService
     {
-        private readonly IBaseService<Transaction> _service;
-        private readonly IMapper _mapper;
+        private readonly ITransactionRepository _transactionRepository;
 
-        public TransactionService(IBaseService<Transaction> service, IMapper mapper)
+        public TransactionService(ITransactionRepository repository, IMapper mapper)
+            : base(repository, mapper)
         {
-            _service = service;
-            _mapper = mapper;
+            _transactionRepository = (_repository as ITransactionRepository);
         }
 
-        public async Task<TransactionDTO> AddAsync(TransactionDTO entry)
+        public Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate)
         {
-            var transaction = _mapper.Map<TransactionDTO, Transaction>(entry);
-            transaction = await _service.AddAsync(transaction);
-            return _mapper.Map<Transaction, TransactionDTO>(transaction);
+            return base.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
         }
 
-        public async Task<List<TransactionDTO>> GetAsync()
+        public async Task<List<TransactionDTO>> GetByDateWithCategoryAsync(DateTime fromDate, DateTime toDate)
         {
-            var result = await _service.GetAsync();
-            return _mapper.Map<List<Transaction>, List<TransactionDTO>>(result);
-        }
-
-
-        public async Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate)
-        {
-            var result = await _service.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
-            return _mapper.Map<List<Transaction>, List<TransactionDTO>>(result);
-        }
-
-        public async Task<TransactionDTO> GetByIdAsync(int id)
-        {
-            var result = await _service.GetByIdAsync(id);
-            return _mapper.Map<Transaction, TransactionDTO>(result);
-        }
-
-        public async Task<TransactionDTO> RemoveAsync(int id)
-        {
-            var transaction = await _service.RemoveAsync(id);
-            return _mapper.Map<Transaction, TransactionDTO>(transaction);
-        }
-
-        public async Task<TransactionDTO> UpdateAsync(TransactionDTO entry)
-        {
-            var transaction = _mapper.Map<TransactionDTO, Transaction>(entry);
-            transaction = await _service.UpdateAsync(transaction);
-            return _mapper.Map<Transaction, TransactionDTO>(transaction);
+            var transactions = await _transactionRepository.GetByDateWithCategoryAsync(fromDate, toDate);
+            return _mapper.Map<List<Transaction>, List<TransactionDTO>>(transactions);
         }
     }
 }

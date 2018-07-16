@@ -1,0 +1,334 @@
+[
+  [
+    {
+      "Id": 1,
+      "AllowDuplicates": false,
+      "ExcludeTransfers": true,
+      "Date": "0001-01-01T00:00:00",
+      "Added": 0,
+      "Duplicated": 0,
+      "Excluded": 0,
+      "Failed": 0,
+      "Transactions": [
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-01T00:00:00",
+          "Money": {
+            "Amount": -3250,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-01T00:00:00",
+          "Money": {
+            "Amount": -800,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Taxi"
+          },
+          "Date": "2018-06-01T00:00:00",
+          "Money": {
+            "Amount": -700,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-02T00:00:00",
+          "Money": {
+            "Amount": -1790,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Restaurants"
+          },
+          "Date": "2018-06-02T00:00:00",
+          "Money": {
+            "Amount": -10180,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Taxi"
+          },
+          "Date": "2018-06-02T00:00:00",
+          "Money": {
+            "Amount": -700,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Others"
+          },
+          "Date": "2018-06-02T00:00:00",
+          "Money": {
+            "Amount": -4.2,
+            "Currency": "CRC"
+          },
+          "Wallet": "BAC _"
+        },
+        {
+          "Category": {
+            "Name": "Sports"
+          },
+          "Date": "2018-06-03T00:00:00",
+          "Money": {
+            "Amount": -1300,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-03T00:00:00",
+          "Money": {
+            "Amount": -100,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-03T00:00:00",
+          "Money": {
+            "Amount": -850,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-03T00:00:00",
+          "Money": {
+            "Amount": -400,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Bus"
+          },
+          "Date": "2018-06-03T00:00:00",
+          "Money": {
+            "Amount": -660,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Personal Care"
+          },
+          "Date": "2018-06-04T00:00:00",
+          "Money": {
+            "Amount": -575,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Sports"
+          },
+          "Date": "2018-06-04T00:00:00",
+          "Money": {
+            "Amount": -1000,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-04T00:00:00",
+          "Money": {
+            "Amount": -200,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Withdrawal"
+          },
+          "Date": "2018-06-04T00:00:00",
+          "Money": {
+            "Amount": -40000,
+            "Currency": "CRC"
+          },
+          "Wallet": "BCR _"
+        },
+        {
+          "Category": {
+            "Name": "Restaurants"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -21.53,
+            "Currency": "USD"
+          },
+          "Wallet": "BAC $"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -585,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Cafe"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -2750,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Ride"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -2000,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Bus"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -150,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Taxi"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -700,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Sports"
+          },
+          "Date": "2018-06-06T00:00:00",
+          "Money": {
+            "Amount": -12000,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-06T00:00:00",
+          "Money": {
+            "Amount": -200,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Junk"
+          },
+          "Date": "2018-06-06T00:00:00",
+          "Money": {
+            "Amount": -1270,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-06T00:00:00",
+          "Money": {
+            "Amount": -3050,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Healthy"
+          },
+          "Date": "2018-06-07T00:00:00",
+          "Money": {
+            "Amount": -800,
+            "Currency": "CRC"
+          },
+          "Wallet": "Cash _"
+        },
+        {
+          "Category": {
+            "Name": "Withdrawal"
+          },
+          "Date": "2018-06-05T00:00:00",
+          "Money": {
+            "Amount": -2000,
+            "Currency": "CRC"
+          },
+          "Wallet": "BCR _"
+        }
+      ]
+    },
+    {
+      "Id": 1,
+      "Added": 0,
+      "Duplicated": 0,
+      "Excluded": 0,
+      "Failed": 0,
+      "Transactions": null,
+      "DateAdded": "0001-01-01T00:00:00",
+      "DateModified": "0001-01-01T00:00:00"
+    }
+  ]
+]

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using CsvHelper.Configuration;
-using PM.Data.Models;
+using PM.API.Models.Request;
 
 namespace PM.CSVtoJSON.Models
 {
-    public class CSVTransactionMap : ClassMap<Transaction>
+    public class CSVTransactionMap : ClassMap<PostBatchTransaction>
     {
         public CSVTransactionMap()
         {
@@ -18,7 +18,7 @@ namespace PM.CSVtoJSON.Models
                 }
                 return 0;
             });
-            //Map(t => t.Category).Name("CATEGORY").Index(1);
+            Map(t => t.CategoryName).Name("CATEGORY").Index(1);
             Map(t => t.Currency).Name("CURRENCY").Index(5);
             Map(t => t.Date).Name("DATE").Index(6);
             Map(t => t.Wallet).Name("WALLET").Index(4);

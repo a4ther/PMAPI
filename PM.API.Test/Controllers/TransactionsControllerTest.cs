@@ -15,10 +15,10 @@ namespace PM.API.Test.Controllers
 {
     public class TransactionsControllerTest
     {
-        private Mock<ITransactionService> _serviceMock;
-        private Mock<IMapper> _mapperMock;
-        private Mock<ILogger<TransactionsController>> _loggerMock;
-        private TransactionsController controller;
+        private readonly Mock<ITransactionService> _serviceMock;
+        private readonly Mock<IMapper> _mapperMock;
+        private readonly Mock<ILogger<TransactionsController>> _loggerMock;
+        private readonly TransactionsController controller;
 
         public TransactionsControllerTest()
         {
@@ -27,17 +27,6 @@ namespace PM.API.Test.Controllers
             _loggerMock = new Mock<ILogger<TransactionsController>>();
 
             controller = new TransactionsController(_serviceMock.Object, _mapperMock.Object, _loggerMock.Object);
-        }
-
-        [Fact]
-        public async Task GetAllAsyncTest_ReturnsOk()
-        {
-            _serviceMock.Setup(s => s.GetAsync())
-                        .Returns(Task.FromResult(new List<TransactionDTO>()));
-
-            var result = await controller.GetAllAsync();
-
-            var assert = Assert.IsType<OkObjectResult>(result);
         }
 
         [Fact]

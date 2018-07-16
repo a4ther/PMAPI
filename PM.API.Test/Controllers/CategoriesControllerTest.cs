@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -6,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using PM.API.Controllers;
-using PM.API.Models;
 using PM.API.Models.Request;
 using PM.Domain.Models;
 using PM.Domain.Services;
@@ -16,10 +14,10 @@ namespace PM.API.Test.Controllers
 {
     public class CategoriesControllerTest
     {
-        private Mock<ICategoryService> _serviceMock;
-        private Mock<IMapper> _mapperMock;
-        private Mock<ILogger<CategoriesController>> _loggerMock;
-        private CategoriesController controller;
+        private readonly Mock<ICategoryService> _serviceMock;
+        private readonly Mock<IMapper> _mapperMock;
+        private readonly Mock<ILogger<CategoriesController>> _loggerMock;
+        private readonly CategoriesController controller;
 
         public CategoriesControllerTest()
         {

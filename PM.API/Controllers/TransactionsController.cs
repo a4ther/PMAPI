@@ -25,19 +25,6 @@ namespace PM.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        [ProducesResponseType(200, Type = typeof(List<TransactionDTO>))]
-        public async Task<IActionResult> GetAllAsync()
-        {
-            var prefix = "[GetAllAsync]";
-            _logger.LogInformation($"{prefix} Executing action");
-
-            var transactions = await _service.GetAsync();
-
-            _logger.LogInformation($"{prefix} Returning {transactions.Count} transactions");
-            return Ok(transactions);
-        }
-
         [HttpGet("{id}")]
         [ProducesResponseType(200, Type = typeof(TransactionDTO))]
         [ProducesResponseType(404)]

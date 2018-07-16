@@ -42,6 +42,7 @@
     <None Remove="log.txt" />
     <None Remove="log.txt" />
     <None Remove="log.txt" />
+    <None Remove="log.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="log4net.config" />

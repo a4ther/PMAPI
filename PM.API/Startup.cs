@@ -34,10 +34,15 @@ namespace PM.API
             {
                 opts.UseMySQL(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddTransient(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-            services.AddTransient(typeof(IBaseService<>), typeof(BaseService<>));
-            services.AddTransient<ITransactionService, TransactionService>();
+
+            services.AddTransient<IBatchRepository, BatchRepository>();
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
+
+            services.AddTransient<IBatchService, BatchService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<ITransactionService, TransactionService>();
+
             services.Configure<Messages>(Configuration.GetSection("Messages"));
         }
 
