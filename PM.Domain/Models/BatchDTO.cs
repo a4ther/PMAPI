@@ -21,5 +21,20 @@ namespace PM.Domain.Models
         public int Failed { get; set; }
 
         public List<TransactionDTO> Transactions { get; set; }
+
+        public bool ShouldSerializeAllowDuplicates()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeExcludeTransfers()
+        {
+            return false;
+        }
+
+        public bool ShouldSerializeTransactions()
+        {
+            return false;
+        }
     }
 }
