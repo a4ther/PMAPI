@@ -46,7 +46,7 @@ namespace PM.Domain.Test.Services
             _repositoryMock.Setup(r => r.InsertAsync(It.IsAny<Batch>()))
                            .Returns(Task.FromResult(batchEntity));
 
-            _transactionMock.Setup(t => t.GetByDateWithCategoryAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
+            _transactionMock.Setup(t => t.GetByDateAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                             .Returns(Task.FromResult(new List<TransactionDTO> { }));
 
             _categoryMock.Setup(c => c.GetByNameAsync(It.IsAny<string>()))
@@ -72,7 +72,7 @@ namespace PM.Domain.Test.Services
             _repositoryMock.Setup(r => r.InsertAsync(It.IsAny<Batch>()))
                            .Returns(Task.FromResult(batchEntity));
 
-            _transactionMock.Setup(t => t.GetByDateWithCategoryAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
+            _transactionMock.Setup(t => t.GetByDateAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                             .Returns(Task.FromResult(batchDto.Transactions.Take(4).ToList()));
 
             _categoryMock.Setup(c => c.GetByNameAsync(It.IsAny<string>()))
@@ -98,7 +98,7 @@ namespace PM.Domain.Test.Services
             _repositoryMock.Setup(r => r.InsertAsync(It.IsAny<Batch>()))
                            .Returns(Task.FromResult(batchEntity));
 
-            _transactionMock.Setup(t => t.GetByDateWithCategoryAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
+            _transactionMock.Setup(t => t.GetByDateAsync(It.IsAny<DateTime>(), It.IsAny<DateTime>()))
                             .Returns(Task.FromResult(batchDto.Transactions.Take(2).ToList()));
 
             _categoryMock.Setup(c => c.GetByNameAsync(It.IsAny<string>()))

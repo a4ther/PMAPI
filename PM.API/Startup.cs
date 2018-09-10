@@ -44,6 +44,15 @@ namespace PM.API
             services.AddTransient<ITransactionService, TransactionService>();
 
             services.Configure<Messages>(Configuration.GetSection("Messages"));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowPMUI", 
+                                  builder => builder.WithOrigins("http://localhost:3000")
+                                      .WithHeaders("content-type")
+                                      .AllowAnyMethod()
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +67,8 @@ namespace PM.API
 
             app.UseErrorHandlingMiddleware();
             app.UseLoggingMiddleware();
+
+            app.UseCors("AllowPMUI");
 
             app.UseMvc();
         }

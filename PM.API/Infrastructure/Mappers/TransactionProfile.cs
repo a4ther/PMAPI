@@ -8,11 +8,6 @@ namespace PM.API.Infrastructure.Mappers
 {
 	public class TransactionProfile : Profile
     {
-        void HandleAction(IMemberConfigurationExpression<TransactionDTO, Transaction, Category> obj)
-        {
-        }
-
-
         public TransactionProfile()
         {
             CreateMap<PostTransaction, TransactionDTO>()

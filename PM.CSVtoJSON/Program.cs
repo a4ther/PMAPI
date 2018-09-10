@@ -16,14 +16,14 @@ namespace PM.CSVtoJSON
         public static void Main(string[] args)
         {
             _filePath = "";
-#if DEBUG
-            _filePath = "/Users/leealfarosoto/Downloads/Test.csv";
-#else
-            if (args.Length > 0) 
+//#if DEBUG
+            _filePath = "/Users/leealfarosoto/Downloads/August.csv";
+//#else
+            /*if (args.Length > 0) 
             {
                 _filePath = args[0];
-            }
-#endif
+            }*/
+//#endif
             _request = new PostBatch
             {
                 AllowDuplicates = false,

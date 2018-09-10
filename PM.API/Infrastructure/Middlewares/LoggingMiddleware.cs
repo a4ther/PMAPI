@@ -35,12 +35,12 @@ namespace PM.API.Infrastructure.Middlewares
                 try
                 {
                     var request = await FormatRequest(httpContext.Request, requestStream);
-                    _logger.LogDebug($"Request: {request}");
+                    _logger.LogError($"Request: {request}");
 
                     await _next.Invoke(httpContext);
 
                     var response = await FormatResponse(httpContext.Response, responseStream);
-                    _logger.LogDebug($"Response: {response}");
+                    _logger.LogError($"Response: {response}");
 
                     await responseStream.CopyToAsync(originalResponseStream);
                 }
@@ -64,7 +64,6 @@ namespace PM.API.Infrastructure.Middlewares
                 await requestStream.WriteAsync(bytesToWrite, 0, bytesToWrite.Length);
                 requestStream.Seek(0, SeekOrigin.Begin);
                 httpRequest.Body = requestStream;
-
 
                 var requestLog = new RequestLog
                 {

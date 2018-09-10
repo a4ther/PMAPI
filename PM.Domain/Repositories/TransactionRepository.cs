@@ -15,10 +15,16 @@ namespace PM.Domain.Repositories
         {
         }
 
-        public Task<List<Transaction>> GetByDateWithCategoryAsync(DateTime from, DateTime to)
+        public Task<List<Transaction>> GetByDateAsync(DateTime from, DateTime to)
         {
             return _context.Transactions.Where(t => t.Date >= from && t.Date <= to)
                            .Include(t => t.Category).ToListAsync();
+        }
+
+        public override async Task<Transaction> InsertAsync(Transaction entity)
+        {
+            entity = await base.InsertAsync(entity);
+            return _context.Transactions.Include(t => t.Category).SingleOrDefault(t => t.ID == entity.ID);
         }
     }
 }

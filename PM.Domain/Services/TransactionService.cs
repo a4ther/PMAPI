@@ -18,14 +18,9 @@ namespace PM.Domain.Services
             _transactionRepository = (_repository as ITransactionRepository);
         }
 
-        public Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate)
+        public async Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate)
         {
-            return base.WhereAsync(e => e.Date >= fromDate && e.Date <= toDate);
-        }
-
-        public async Task<List<TransactionDTO>> GetByDateWithCategoryAsync(DateTime fromDate, DateTime toDate)
-        {
-            var transactions = await _transactionRepository.GetByDateWithCategoryAsync(fromDate, toDate);
+            var transactions = await _transactionRepository.GetByDateAsync(fromDate, toDate);
             return _mapper.Map<List<Transaction>, List<TransactionDTO>>(transactions);
         }
     }

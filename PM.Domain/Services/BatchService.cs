@@ -58,7 +58,7 @@ namespace PM.Domain.Services
             {
                 var fromDate = transactions.Min(t => t.Date);
                 var toDate = transactions.Max(t => t.Date);
-                storedTransactions = await _transactionService.GetByDateWithCategoryAsync(fromDate, toDate);
+                storedTransactions = await _transactionService.GetByDateAsync(fromDate, toDate);
                 _logger.LogInformation($"{prefix} Successfully retrieved {storedTransactions.Count} transactions from store");
             }
 
@@ -115,7 +115,6 @@ namespace PM.Domain.Services
             catch (Exception ex)
             {
                 _logger.LogError($"{prefix} {ex.GetType().Name}  exception while adding transaction to batch");
-                _logger.LogError(ex.StackTrace);
                 batch.Failed += 1;
             }
         }

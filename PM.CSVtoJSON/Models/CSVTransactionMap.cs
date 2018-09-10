@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
 using PM.API.Models.Request;
 
 namespace PM.CSVtoJSON.Models
@@ -9,19 +10,21 @@ namespace PM.CSVtoJSON.Models
     {
         public CSVTransactionMap()
         {
+            var dateTimeConverter = new DateConverter();
+
             Map(t => t.Amount).ConvertUsing(row => 
             {
-                var amountString = Regex.Replace(row.GetField<string>("AMOUNT"), "[^-.0-9]", "");
+                var amountString = Regex.Replace(row.GetField<string>("Amount"), "[^-.0-9]", "");
                 if (Decimal.TryParse(amountString, out var amountDecimal))
                 {
                     return amountDecimal;
                 }
                 return 0;
             });
-            Map(t => t.CategoryName).Name("CATEGORY").Index(1);
-            Map(t => t.Currency).Name("CURRENCY").Index(5);
-            Map(t => t.Date).Name("DATE").Index(6);
-            Map(t => t.Wallet).Name("WALLET").Index(4);
+            Map(t => t.CategoryName).Name("Category").Index(3);
+            Map(t => t.Currency).Name("Currency").Index(5);
+            Map(t => t.Date).Name("Date").Index(6).TypeConverter(dateTimeConverter);
+            Map(t => t.Wallet).Name("Account").Index(4);
         }
     }
 }

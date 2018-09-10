@@ -9,7 +9,5 @@ namespace PM.Domain.Services
     public interface ITransactionService : IBaseService<TransactionDTO, Transaction>
     {
         Task<List<TransactionDTO>> GetByDateAsync(DateTime fromDate, DateTime toDate);
-
-        Task<List<TransactionDTO>> GetByDateWithCategoryAsync(DateTime fromDate, DateTime toDate);
     }
 }

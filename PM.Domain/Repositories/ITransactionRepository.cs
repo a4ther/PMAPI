@@ -7,6 +7,6 @@ namespace PM.Domain.Repositories
 {
     public interface ITransactionRepository : IBaseRepository<Transaction>
     {
-        Task<List<Transaction>> GetByDateWithCategoryAsync(DateTime from, DateTime to);
+        Task<List<Transaction>> GetByDateAsync(DateTime from, DateTime to);
     }
 }

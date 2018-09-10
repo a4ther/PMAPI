@@ -23,7 +23,6 @@ namespace PM.Data
 
         private static Category[] GetDefaultCategories()
         {
-            var dateAdded = DateTime.Now;
             return new Category[]
             {
                 NewCategory("Gifts & Donations", new string[] { }),
